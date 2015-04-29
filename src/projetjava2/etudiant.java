@@ -10,5 +10,7 @@ package projetjava2;
  * @author Arnaud
  */
 public class etudiant {
+    public static void main(String[] args) {
     System.out.println("test");
+}
 }

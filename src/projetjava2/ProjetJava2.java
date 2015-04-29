@@ -18,6 +18,8 @@ public class ProjetJava2 {
         System.out.println("onf");
         System.out.println("test");
         System.out.println("test25");
+        System.out.println("test64");
+
 
         
         // TODO code application logic here

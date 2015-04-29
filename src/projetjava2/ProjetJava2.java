@@ -17,6 +17,10 @@ public class ProjetJava2 {
     public static void main(String[] args) {
         System.out.println("onf");
         System.out.println("test");
+        System.out.println("test25");
+        System.out.println("test64");
+
+
          System.out.println("test11");
          System.out.println("test22");
         

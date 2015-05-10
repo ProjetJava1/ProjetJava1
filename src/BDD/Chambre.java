@@ -10,13 +10,14 @@ package BDD;
  * @author Arnaud
  */
 public class Chambre {
-  
+    private int Id_chambre = 0;
     private String Code_service = "";
     private int No_chambre = 0;
     private int Surveillant = 0;
     private int Nb_lits =0;
     
-    public Chambre(String Code_service,int No_chambre,int Surveillant,int Nb_lits) {
+    public Chambre(int Id_chambre, String Code_service,int No_chambre,int Surveillant,int Nb_lits) {
+    this.Id_chambre = Id_chambre;
     this.Code_service = Code_service;
     this.No_chambre = No_chambre;
     this.Surveillant = Surveillant;
@@ -25,6 +26,14 @@ public class Chambre {
     
     public Chambre(){};
      
+  public int getId_chambre() {
+  return Id_chambre;
+  }
+
+  public void setId_chambre(int Id_chambre) {
+    this.Id_chambre = Id_chambre;
+  }
+  
   public String getCode_service() {
     return Code_service;
   }

@@ -57,7 +57,7 @@ public class ChambreDAO extends DAO<Chambre>{
                                             	ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                                 ResultSet.CONCUR_UPDATABLE
                                              ).executeQuery(
-                                                "SELECT * FROM chambre WHERE no_chambre = " + id
+                                                "SELECT * FROM chambre WHERE id_chambre = " + id
                                              );
             if(result.first())
             		ch = new Chambre(
@@ -86,12 +86,12 @@ public class ChambreDAO extends DAO<Chambre>{
                         ResultSet.CONCUR_UPDATABLE
                      ).executeUpdate(
                     	"UPDATE chambre SET code_service = '" + obj.getCode_service() + "',"+
+                        " no_chambre = '" +obj.getNo_chambre() + "',"+
                         " surveillant = '" +obj.getSurveillant() + "',"+
                         " nb_lits ='" +obj.getNb_lits() + "'"+
-                    	" WHERE lan_id = " + obj.getNo_chambre()
-                     );
+                    	" WHERE id_chambre = " + obj.getId_chambre()                   );
 			
-			obj = this.find(obj.getNo_chambre());
+			obj = this.find(obj.getId_chambre());
 	    } catch (SQLException e) {
 	            e.printStackTrace();
 	    }

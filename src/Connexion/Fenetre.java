@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 package Connexion;
-
 /*
  * 
  * Librairies importées
  */
+import BDD.Chambre;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
@@ -209,6 +209,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
                 System.out.println("Connexion echouee : probleme SQL");
                 e.printStackTrace();
             }
+            
 
         } 
         
@@ -248,7 +249,16 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             listeDeRequetes.select(0);
             listeRequetesMaj.select(0);
         }
+           DAO<Chambre> chambreDao = new ChambreDAO();
+           Chambre chambre1 = new Chambre( 12,  "REA", 101, 12, 2);
+           chambreDao.update(chambre1);
+    int i;
+    for(i=1;i<13;i++)
+    System.out.println(chambreDao.find(i).getCode_service());
     }
+           
+    
+ 
     
     /**
     *

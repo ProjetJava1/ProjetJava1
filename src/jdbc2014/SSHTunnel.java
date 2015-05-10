@@ -134,7 +134,7 @@ public class SSHTunnel {
      */
     static class SilentUserInfo implements UserInfo, UIKeyboardInteractive {
 
-        private String password;
+        private final String password;
 
         public SilentUserInfo(String password) {
             this.password = password;

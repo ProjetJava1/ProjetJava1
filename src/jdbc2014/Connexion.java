@@ -10,7 +10,7 @@ package jdbc2014;
  */
 import java.sql.*;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
 /*
  * 
  * Connexion a votre BDD via le tunnel SSH
@@ -74,9 +74,14 @@ public class Connexion {
      * Méthode privée qui initialise la liste des requetes de selection
      */
     private void remplirRequetes() {
+        String requete_test;
         ajouterRequete("SELECT nom, prenom FROM employe ORDER BY nom;");
         ajouterRequete("SELECT e1.nom, e1.prenom, d1.specialite FROM employe e1, docteur d1 WHERE d1.numero=e1.numero ORDER BY e1.nom ;");
         ajouterRequete("SELECT m.nom, m.prenom, e1.nom, e1.prenom  FROM employe e1, docteur d1, malade m, soigne WHERE d1.numero=e1.numero AND d1.numero= no_docteur AND m.numero=no_malade ORDER BY m.nom ;");
+         JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+        String nom = jop.showInputDialog(null, "Entrez le nom du docteur ", "Nom Doc", JOptionPane.QUESTION_MESSAGE);
+        requete_test="SELECT m.nom, m.prenom FROM employe e1, docteur d1, malade m, soigne WHERE d1.numero=e1.numero AND d1.numero= no_docteur AND m.numero=no_malade AND e1.nom="+"'"+nom+"'";
+        ajouterRequete(requete_test);
         /*ajouterRequete("SELECT ename, sal FROM Emp ORDER BY sal;");
         ajouterRequete("SELECT Dept.*, Emp.*, Mission.* FROM Dept, Emp, Mission WHERE Dept.deptno=Emp.deptno AND Emp.empno=Mission.empno;");
         ajouterRequete("SELECT AVG (Emp.sal) FROM Emp, Mission WHERE Emp.empno = Mission.empno;");
@@ -160,7 +165,7 @@ public class Connexion {
 
             // Concatener les champs de la ligne separes par ,
             for (int i = 1; i < nbColonne; i++) {
-                champs = champs + "," + rset.getString(i+1);
+                champs = champs + " " + rset.getString(i+1);
             }
 
             // ajouter un "\n" à la ligne des champs

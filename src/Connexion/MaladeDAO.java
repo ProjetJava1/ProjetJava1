@@ -94,21 +94,30 @@ public class MaladeDAO extends DAO<Malade>{
 
     @Override
 	public void delete(int id) {
-		try {
-			
-                this    .connect
-                    	.createStatement(
-                             ResultSet.TYPE_SCROLL_INSENSITIVE, 
-                             ResultSet.CONCUR_UPDATABLE
-                        ).executeUpdate(
-                             "DELETE FROM malade WHERE Numero = " + id
-                        );
-			
-	    } catch (SQLException e) {
-	            e.printStackTrace();
-	    }
-	}
-    
+        try {
+        ResultSet result = this .connect
+                                .createStatement(
+                                            ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                            ResultSet.CONCUR_UPDATABLE
+                                         ).executeQuery(
+                                            "SELECT * FROM hospitalisation WHERE no_malade = " + id
+                                         );
+        if(result.first()){
+            //Le message
+            System.out.println("Malade dans hospitalisation");
+        }
+        else   this    .connect
+                    .createStatement(
+                         ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                         ResultSet.CONCUR_UPDATABLE
+                    ).executeUpdate(
+                         "DELETE FROM malade WHERE Numero = " + id
+                    );
+
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+    }
     
     
 }

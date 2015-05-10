@@ -102,9 +102,22 @@ public class MaladeDAO extends DAO<Malade>{
                                          ).executeQuery(
                                             "SELECT * FROM hospitalisation WHERE no_malade = " + id
                                          );
-        if(result.first()){
-            //Le message
-            System.out.println("Malade dans hospitalisation");
+        ResultSet result2 = this .connect
+                                .createStatement(
+                                            ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                            ResultSet.CONCUR_UPDATABLE
+                                         ).executeQuery(
+                                            "SELECT * FROM soigne WHERE no_malade = " + id
+                                         );
+        if(result.first() || result2.first()){
+            if(result.first()){
+                //Le message
+                System.out.println("Malade dans hospitalisation");
+            }
+            if(result2.first()){
+                //Le message
+                System.out.println("Malade dans soigne");
+            }
         }
         else   this    .connect
                     .createStatement(

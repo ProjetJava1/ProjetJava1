@@ -59,7 +59,7 @@ public class DocteurDAO extends DAO<Docteur>{
 	
     @Override
 	public Docteur find(int id) {
-		Docteur inf = new Docteur();
+		Docteur doc = new Docteur();
 		try {
             ResultSet result = this .connect
                                     .createStatement(
@@ -69,14 +69,14 @@ public class DocteurDAO extends DAO<Docteur>{
                                                 "SELECT * FROM docteur WHERE numero = " + id
                                              );
             if(result.first())
-            		inf = new Docteur(
+            		doc = new Docteur(
                                         result.getString("specialite")                              
                                         );
 //            
 		    } catch (SQLException e) {
 		            e.printStackTrace();
 		    }
-		   return inf;
+		   return doc;
 
 	}
 	

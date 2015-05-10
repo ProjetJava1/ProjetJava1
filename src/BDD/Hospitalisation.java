@@ -10,6 +10,7 @@ package BDD;
  * @author Arnaud
  */
 public class Hospitalisation {
+    private int Id_hospitalisation =0;
     private int No_malade = 0;
     private String Code_service = "";
     private int No_chambre = 0;
@@ -24,6 +25,14 @@ public class Hospitalisation {
     
     public Hospitalisation(){};
      
+   public int getId_hospitalisation() {
+    return Id_hospitalisation;
+  }
+
+  public void setId_hospitalisation(int Id_hospitalisation) {
+    this.Id_hospitalisation = Id_hospitalisation;
+  }
+  
   public int getNo_malade() {
     return No_malade;
   }

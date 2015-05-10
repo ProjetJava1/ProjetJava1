@@ -21,7 +21,7 @@ public class Employe {
     this.Numero = Numero;
     this.Nom = Nom;
     this.Prénom = Prénom;
-    this.Tel = Tel;
+    this.Adresse = Adresse;
     this.Tel = Tel;
 }
     

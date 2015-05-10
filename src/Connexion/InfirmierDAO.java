@@ -27,9 +27,8 @@ public class InfirmierDAO extends DAO<Infirmier>{
 				int id = result.getInt("id");*/
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO infirmier (numero, code_service, rotation, salaire) VALUES(?, ?, ?, ?)"
-                                                    );
-                                prepare.setInt(1, obj.getNumero());
+                                                    	"INSERT INTO infirmier (code_service, rotation, salaire) VALUES(?, ?, ?)"
+                                                    );     
 				prepare.setString(2, obj.getCode_service());
 				prepare.setString(3, obj.getRotation());
                                 prepare.setFloat(4, obj.getSalaire());

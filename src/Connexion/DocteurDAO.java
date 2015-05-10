@@ -104,8 +104,19 @@ public class DocteurDAO extends DAO<Docteur>{
     @Override
 	public void delete(int id) {
 		try {
-			
-                this    .connect
+                    ResultSet result2 = this .connect
+                                .createStatement(
+                                            ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                            ResultSet.CONCUR_UPDATABLE
+                                         ).executeQuery(
+                                            "SELECT * FROM soigne WHERE no_malade = " + id
+                                         );
+        if(result2.first()){
+                //Le message
+                System.out.println("Malade dans soigne");
+            
+        }
+        else this    .connect
                     	.createStatement(
                              ResultSet.TYPE_SCROLL_INSENSITIVE, 
                              ResultSet.CONCUR_UPDATABLE

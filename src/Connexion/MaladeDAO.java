@@ -17,9 +17,8 @@ public class MaladeDAO extends DAO<Malade>{
 			 
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO malade (numero, nom, prenom, adresse, tel, mutuelle ) VALUES(?, ?, ?, ?, ?, ?)"
+                                                    	"INSERT INTO malade (nom, prenom, adresse, tel, mutuelle ) VALUES(?, ?, ?, ?, ?)"
                                                     );
-                                prepare.setInt(1, obj.getNumero());
 				prepare.setString(2, obj.getNom());
 				prepare.setString(3, obj.getPrénom());
                                 prepare.setString(4, obj.getAdresse());

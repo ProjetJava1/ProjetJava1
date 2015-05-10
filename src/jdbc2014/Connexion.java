@@ -23,7 +23,7 @@ public class Connexion {
     /**
      * Attributs prives : connexion JDBC, statement, ordre requete et resultat requete
      */
-    private Connection conn;
+    private static Connection conn;
     private Statement stmt;
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
@@ -186,15 +186,9 @@ public class Connexion {
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
     }
+
+    public static Connection getInstance(){
+	return conn;	
+}	
 }
 
-	public static Connection getInstance(){
-		if(connect == null){
-			try {
-				connect = DriverManager.getConnection(url, user, passwd);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}		
-		return connect;	
-	}	

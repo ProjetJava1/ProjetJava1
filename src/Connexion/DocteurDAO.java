@@ -10,7 +10,7 @@ import java.sql.*;
  *
  * @author user
  */
-public class ChambreDAO extends DAO<Chambre>{
+public class DocteurDAO extends DAO<Chambre>{
     @Override
     public Chambre create(Chambre obj) {
 		try {
@@ -29,11 +29,12 @@ public class ChambreDAO extends DAO<Chambre>{
                                                     .prepareStatement(
                                                     	"INSERT INTO chambre (id_chambre, code_service, no_chambre, surveillants, nb_lits ) VALUES(?, ?, ?, ?)"
                                                     );
-                                prepare.setInt(1, obj.getId_chambre());
+                                prepare.setInt(1, obj.getNo_chambre());
 				prepare.setString(2, obj.getCode_service());
 				prepare.setInt(3, obj.getNo_chambre());
                                 prepare.setInt(4, obj.getSurveillant());
                                 prepare.setInt(5, obj.getNb_lits());
+                                
                                 
 				
 				prepare.executeUpdate();
@@ -61,9 +62,8 @@ public class ChambreDAO extends DAO<Chambre>{
                                              );
             if(result.first())
             		ch = new Chambre(
-                                        id,
                                         result.getString("code_service"),
-                                        result.getInt("no_chambre"),
+                                        result.getInt("no_chambre"), 
                                         result.getInt("surveillant"),
                                         result.getInt("nb_lits")
                                     );

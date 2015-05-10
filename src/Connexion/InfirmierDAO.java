@@ -47,9 +47,7 @@ public class InfirmierDAO extends DAO<Infirmier>{
 				prepare.setString(3, obj.getRotation());
                                 prepare.setFloat(4, obj.getSalaire());
                            
-                                
-				
-				prepare.executeUpdate();
+                                prepare.executeUpdate();
 				obj = this.find(obj.getNumero());	
 				
 			//}

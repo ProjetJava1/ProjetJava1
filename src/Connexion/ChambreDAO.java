@@ -29,10 +29,10 @@ public class ChambreDAO extends DAO<Chambre>{
                                                     .prepareStatement(
                                                     	"INSERT INTO chambre (code_service, no_chambre, surveillant, nb_lits ) VALUES( ?, ?, ?, ?)"
                                                     );                          
-				prepare.setString(2, obj.getCode_service());
-				prepare.setInt(3, obj.getNo_chambre());
-                                prepare.setInt(4, obj.getSurveillant());
-                                prepare.setInt(5, obj.getNb_lits());
+				prepare.setString(1, obj.getCode_service());
+				prepare.setInt(2, obj.getNo_chambre());
+                                prepare.setInt(3, obj.getSurveillant());
+                                prepare.setInt(4, obj.getNb_lits());
                                 
 				
 				prepare.executeUpdate();

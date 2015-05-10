@@ -30,10 +30,10 @@ public class ServiceDAO extends DAO<Service>{
                                                     .prepareStatement(
                                                     	"INSERT INTO service (code, nom, batiment, directeur ) VALUES(?, ?, ?, ?)"
                                                     );                 
-				prepare.setString(2, obj.getCode_service());
-				prepare.setString(3, obj.getNom());
-                                prepare.setString(4, obj.getBatiment());
-                                prepare.setInt(5, obj.getDirecteur());
+				prepare.setString(1, obj.getCode_service());
+				prepare.setString(2, obj.getNom());
+                                prepare.setString(3, obj.getBatiment());
+                                prepare.setInt(4, obj.getDirecteur());
                                 
 				
 				prepare.executeUpdate();

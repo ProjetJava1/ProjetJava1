@@ -18,13 +18,12 @@ public class EmployeDAO extends DAO<Employe>{
 			
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO employe (numero, nom, prenom, adresse, tel ) VALUES(?, ?, ?, ?, ?)"
+                                                    	"INSERT INTO employe ( nom, prenom, adresse, tel ) VALUES( ?, ?, ?, ?)"
                                                     );
-                                prepare.setInt(1, obj.getNumero());
-				prepare.setString(2, obj.getNom());
-				prepare.setString(3, obj.getPrénom());
-                                prepare.setString(4, obj.getAdresse());
-                                prepare.setString(5, obj.getTel());
+				prepare.setString(1, obj.getNom());
+				prepare.setString(2, obj.getPrénom());
+                                prepare.setString(3, obj.getAdresse());
+                                prepare.setString(4, obj.getTel());
                                 
 				
 				prepare.executeUpdate();

@@ -29,9 +29,9 @@ public class InfirmierDAO extends DAO<Infirmier>{
                                                     .prepareStatement(
                                                     	"INSERT INTO infirmier (code_service, rotation, salaire) VALUES(?, ?, ?)"
                                                     );     
-				prepare.setString(2, obj.getCode_service());
-				prepare.setString(3, obj.getRotation());
-                                prepare.setFloat(4, obj.getSalaire());
+				prepare.setString(1, obj.getCode_service());
+				prepare.setString(2, obj.getRotation());
+                                prepare.setFloat(3, obj.getSalaire());
                            
                                 
 				

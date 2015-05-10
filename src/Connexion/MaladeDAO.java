@@ -19,11 +19,11 @@ public class MaladeDAO extends DAO<Malade>{
                                                     .prepareStatement(
                                                     	"INSERT INTO malade (nom, prenom, adresse, tel, mutuelle ) VALUES(?, ?, ?, ?, ?)"
                                                     );
-				prepare.setString(2, obj.getNom());
-				prepare.setString(3, obj.getPrénom());
-                                prepare.setString(4, obj.getAdresse());
-                                prepare.setString(5, obj.getTel());
-                                prepare.setString(6, obj.getMutuelle());
+				prepare.setString(1, obj.getNom());
+				prepare.setString(2, obj.getPrénom());
+                                prepare.setString(3, obj.getAdresse());
+                                prepare.setString(4, obj.getTel());
+                                prepare.setString(5, obj.getMutuelle());
                                 
 				
 				prepare.executeUpdate();

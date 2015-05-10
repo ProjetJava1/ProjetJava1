@@ -27,9 +27,8 @@ public class ChambreDAO extends DAO<Chambre>{
 				int id = result.getInt("id");*/
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO chambre (id_chambre, code_service, no_chambre, surveillant, nb_lits ) VALUES(?, ?, ?, ?, ?)"
-                                                    );
-                                prepare.setInt(1, obj.getId_chambre());
+                                                    	"INSERT INTO chambre (code_service, no_chambre, surveillant, nb_lits ) VALUES( ?, ?, ?, ?)"
+                                                    );                          
 				prepare.setString(2, obj.getCode_service());
 				prepare.setInt(3, obj.getNo_chambre());
                                 prepare.setInt(4, obj.getSurveillant());

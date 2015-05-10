@@ -33,7 +33,7 @@ public class ServiceDAO extends DAO<Service>{
                                 prepare.setInt(1, obj.getId_service());
 				prepare.setString(2, obj.getCode_service());
 				prepare.setString(3, obj.getNom());
-                                prepare.setInt(4, obj.getBatiment());
+                                prepare.setString(4, obj.getBatiment());
                                 prepare.setInt(5, obj.getDirecteur());
                                 
 				
@@ -65,8 +65,8 @@ public class ServiceDAO extends DAO<Service>{
                                         id,
                                         result.getString("code"),
                                         result.getString("nom"),
-                                        result.getChar("batiment"),
-                                        result.getString("directeur")
+                                        result.getString("batiment"),
+                                        result.getInt("directeur")
                                     );
 //            
 		    } catch (SQLException e) {

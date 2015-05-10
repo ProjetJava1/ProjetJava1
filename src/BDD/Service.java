@@ -13,10 +13,10 @@ public class Service {
     private int Id_service =0;
     private String Code_service = "";
     private String Nom = "";
-    private char Batiment = 0;
+    private String Batiment = "";
     private int Directeur =0;
     
-    public Service(int Id_service, String Code_service,String Nom,char Batiment,int Directeur) {
+    public Service(int Id_service, String Code_service,String Nom,String Batiment,int Directeur) {
     this.Id_service = Id_service;
     this.Code_service = Code_service;
     this.Nom = Nom;
@@ -49,11 +49,11 @@ public class Service {
     this.Nom = Nom;
   }
 
-  public char getBatiment() {
+  public String getBatiment() {
     return Batiment;
   }
 
-  public void setBatiment(char Batiment) {
+  public void setBatiment(String Batiment) {
     this.Batiment = Batiment;
   }   
   

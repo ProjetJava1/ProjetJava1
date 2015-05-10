@@ -8,6 +8,7 @@ package Connexion;
  * Librairies importées
  */
 import BDD.Chambre;
+import BDD.Infirmier;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
@@ -249,12 +250,12 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             listeDeRequetes.select(0);
             listeRequetesMaj.select(0);
         }
-           DAO<Chambre> chambreDao = new ChambreDAO();
-           Chambre chambre1 = new Chambre( 10,  "REA", 101, 12, 2);
-           chambreDao.create(chambre1);
+           DAO<Infirmier> infirmdao = new InfirmierDAO();
+           Infirmier inf = new Infirmier(196, "REA", "JOUR", (float) 3000.00);
+           infirmdao.create(inf);
     int i;
     for(i=1;i<13;i++)
-    System.out.println(chambreDao.find(i).getCode_service());
+    System.out.println(infirmdao.find(i).getCode_service());
     }
            
     

@@ -109,7 +109,7 @@ public class ChambreDAO extends DAO<Chambre>{
                              ResultSet.TYPE_SCROLL_INSENSITIVE, 
                              ResultSet.CONCUR_UPDATABLE
                         ).executeUpdate(
-                             "DELETE FROM langage WHERE lan_id = " + obj.getNo_chambre()
+                             "DELETE FROM langage WHERE id_chambre = " + obj.getId_chambre()
                         );
 			
 	    } catch (SQLException e) {

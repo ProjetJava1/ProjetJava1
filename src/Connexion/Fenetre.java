@@ -249,13 +249,15 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             listeDeRequetes.select(0);
             listeRequetesMaj.select(0);
         }
-           DAO<Employe> employeDAO = new EmployeDAO();
-           Employe emp = new Employe(0,"Crapaud", "Jean-Michel", "La River", "010");
-           employeDAO.create(emp);
+           DAO<Infirmier> infirmierDAO = new InfirmierDAO();
+           Infirmier emp = new Infirmier("CHG", "JOUR", (float) 3000.00);
+           infirmierDAO.create(emp);
+    }
+        /*
     int i;
     for(i=1;i<13;i++)
     System.out.println(employeDAO.find(i).getNom());
-    }
+    }*/
            
     
  

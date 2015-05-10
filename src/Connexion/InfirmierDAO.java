@@ -14,24 +14,38 @@ public class InfirmierDAO extends DAO<Infirmier>{
     @Override
     public Infirmier create(Infirmier obj) {
 		try {
-			 
-			//la prochaine valeur de la séquence correspondant à l'id de notre table
-			/*ResultSet result = this	.connect
+                        int id=0;
+                        String nom="Crapaud";
+                        String prenom="Jean-Michel";
+                        String adresse="La River";
+                        String tel="010";
+			DAO<Employe> employeDAO = new EmployeDAO();
+                        Employe emp = new Employe(0,nom,prenom,adresse,tel );
+                        employeDAO.create(emp);
+                        try{
+                            ResultSet resultat=this .connect
                                     .createStatement(
-                                    		ResultSet.TYPE_SCROLL_INSENSITIVE, 
-                                    		ResultSet.CONCUR_UPDATABLE
-                                    ).executeQuery(
-                                    		"SELECT NEXTVAL('id_chambre') as id"
-                                    );
-			if(result.first()){
-				int id = result.getInt("id");*/
+                                            	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                                ResultSet.CONCUR_UPDATABLE
+                                             ).executeQuery(
+                                                "SELECT * FROM employe WHERE prenom = '"+prenom+"'AND nom='"+nom+"'"
+                                             );
+                        if(resultat.first())
+                            
+                                        id=resultat.getInt("numero");
+                        }catch (SQLException e) {
+		            e.printStackTrace();
+		    }
+                        
+                        //System.out.println(id);
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO infirmier (code_service, rotation, salaire) VALUES(?, ?, ?)"
-                                                    );     
-				prepare.setString(1, obj.getCode_service());
-				prepare.setString(2, obj.getRotation());
-                                prepare.setFloat(3, obj.getSalaire());
+                                                    	"INSERT INTO infirmier (numero, code_service, rotation, salaire) VALUES(?, ?, ?, ?)"
+                                                    );  
+                                prepare.setInt(1, id);
+				prepare.setString(2, obj.getCode_service());
+				prepare.setString(3, obj.getRotation());
+                                prepare.setFloat(4, obj.getSalaire());
                            
                                 
 				
@@ -60,7 +74,6 @@ public class InfirmierDAO extends DAO<Infirmier>{
                                              );
             if(result.first())
             		inf = new Infirmier(
-                                        id,
                                         result.getString("code_service"),
                                         result.getString("rotation"),
                                         result.getFloat("salaire")                                

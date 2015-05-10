@@ -11,6 +11,7 @@ package jdbc2014;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
 /*
  * 
  * Connexion a votre BDD via le tunnel SSH
@@ -58,8 +59,8 @@ public class Connexion {
             stmt = conn.createStatement();
 
             // initialisation de la liste des requetes de selection et de MAJ
-            remplirRequetes();
-            remplirRequetesMaj();
+            //remplirRequetes();
+            //remplirRequetesMaj();
         }
     }
 
@@ -186,3 +187,14 @@ public class Connexion {
         stmt.executeUpdate(requeteMaj);
     }
 }
+
+	public static Connection getInstance(){
+		if(connect == null){
+			try {
+				connect = DriverManager.getConnection(url, user, passwd);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		return connect;	
+	}	

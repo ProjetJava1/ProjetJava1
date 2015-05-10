@@ -10,17 +10,24 @@ package BDD;
  * @author Arnaud
  */
 public class Soin {
-    
+    private int Id_soin =0;
     private int No_docteur = 0;
     private int No_malade = 0;
     
-    public Soin(int No_docteur, int No_malade) {
+    public Soin(int Id_soin, int No_docteur, int No_malade) {
+    this.Id_soin = Id_soin;
     this.No_docteur = No_docteur;
     this.No_malade = No_malade;
     }
     
     public Soin(){};
      
+    public int getId_soin() {
+    return Id_soin;
+    }
+    public void setId_soin(int Id_soin) {
+    this.Id_soin = Id_soin;
+    }
     public int getNo_docteur() {
     return No_docteur;
     }

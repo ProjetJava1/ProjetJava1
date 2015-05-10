@@ -28,9 +28,8 @@ public class ServiceDAO extends DAO<Service>{
 				int id = result.getInt("id");*/
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO service (id_service, code, nom, batiment, directeur ) VALUES(?, ?, ?, ?, ?)"
-                                                    );
-                                prepare.setInt(1, obj.getId_service());
+                                                    	"INSERT INTO service (code, nom, batiment, directeur ) VALUES(?, ?, ?, ?)"
+                                                    );                 
 				prepare.setString(2, obj.getCode_service());
 				prepare.setString(3, obj.getNom());
                                 prepare.setString(4, obj.getBatiment());

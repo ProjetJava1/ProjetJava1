@@ -10,13 +10,14 @@ package BDD;
  * @author Arnaud
  */
 public class Service {
-    
+    private int Id_service =0;
     private String Code_service = "";
     private String Nom = "";
     private char Batiment = 0;
     private int Directeur =0;
     
-    public Service(String Code_service,String Nom,char Batiment,int Directeur) {
+    public Service(int Id_service, String Code_service,String Nom,char Batiment,int Directeur) {
+    this.Id_service = Id_service;
     this.Code_service = Code_service;
     this.Nom = Nom;
     this.Batiment = Batiment;
@@ -25,6 +26,13 @@ public class Service {
     
     public Service(){};
      
+    public int getId_service() {
+    return Id_service;
+    }
+
+    public void setId_service(int Id_service) {
+    this.Id_service = Id_service;
+    }   
     public String getCode_service() {
     return Code_service;
     }

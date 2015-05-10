@@ -250,8 +250,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             listeRequetesMaj.select(0);
         }
            DAO<Chambre> chambreDao = new ChambreDAO();
-           Chambre chambre1 = new Chambre( 12,  "REA", 101, 12, 2);
-           chambreDao.update(chambre1);
+           Chambre chambre1 = new Chambre( 10,  "REA", 101, 12, 2);
+           chambreDao.create(chambre1);
     int i;
     for(i=1;i<13;i++)
     System.out.println(chambreDao.find(i).getCode_service());

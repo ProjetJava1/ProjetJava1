@@ -16,7 +16,7 @@ public class ChambreDAO extends DAO<Chambre>{
 		try {
 			 
 			//la prochaine valeur de la séquence correspondant à l'id de notre table
-			ResultSet result = this	.connect
+			/*ResultSet result = this	.connect
                                     .createStatement(
                                     		ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                     		ResultSet.CONCUR_UPDATABLE
@@ -24,10 +24,10 @@ public class ChambreDAO extends DAO<Chambre>{
                                     		"SELECT NEXTVAL('id_chambre') as id"
                                     );
 			if(result.first()){
-				int id = result.getInt("id");
+				int id = result.getInt("id");*/
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
-                                                    	"INSERT INTO chambre (id_chambre, code_service, no_chambre, surveillants, nb_lits ) VALUES(?, ?, ?, ?)"
+                                                    	"INSERT INTO chambre (id_chambre, code_service, no_chambre, surveillant, nb_lits ) VALUES(?, ?, ?, ?, ?)"
                                                     );
                                 prepare.setInt(1, obj.getId_chambre());
 				prepare.setString(2, obj.getCode_service());
@@ -37,9 +37,9 @@ public class ChambreDAO extends DAO<Chambre>{
                                 
 				
 				prepare.executeUpdate();
-				obj = this.find(id);	
+				obj = this.find(obj.getId_chambre());	
 				
-			}
+			//}
 	    } catch (SQLException e) {
 	            e.printStackTrace();
 	    }
@@ -101,7 +101,7 @@ public class ChambreDAO extends DAO<Chambre>{
 
 
     @Override
-	public void delete(Chambre obj) {
+	public void delete(int id) {
 		try {
 			
                 this    .connect
@@ -109,7 +109,7 @@ public class ChambreDAO extends DAO<Chambre>{
                              ResultSet.TYPE_SCROLL_INSENSITIVE, 
                              ResultSet.CONCUR_UPDATABLE
                         ).executeUpdate(
-                             "DELETE FROM langage WHERE id_chambre = " + obj.getId_chambre()
+                             "DELETE FROM chambre WHERE id_chambre = " + id
                         );
 			
 	    } catch (SQLException e) {

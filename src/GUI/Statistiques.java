@@ -10,6 +10,7 @@ package GUI;
  * @author F
  */
 import Connexion.ChartDocteur;
+import Connexion.ChartMutuelle;
 import Connexion.Charts;
 import java.awt.*;
 import javax.swing.*;
@@ -32,7 +33,7 @@ public class Statistiques extends JFrame implements ActionListener
             
             this.Stat1 = new JButton("Nombre d'hospitalisations par service");
             this.Stat2 = new JButton("Nombre de docteurs par spécialisation");
-            this.Stat3 = new JButton("Afficher des infos des docteurs");// Changer le nom
+            this.Stat3 = new JButton("Nombre de malades par mutuelle");// Changer le nom
             this.Quitter = new JButton("Quitter");
 
             Container panneau=this.getContentPane();
@@ -45,7 +46,7 @@ public class Statistiques extends JFrame implements ActionListener
             Stat2.setText("Nombre de docteurs par spécialisation");
             
             Stat3.setBounds(new Rectangle(15,200,250,40));
-            Stat3.setText("Afficher des infos des docteurs");
+            Stat3.setText("Nombre de malades par mutuelle");
             
             Quitter.setBounds(new Rectangle(15,290,250,40));
             Quitter.setText("Quitter");
@@ -83,9 +84,9 @@ public class Statistiques extends JFrame implements ActionListener
             System.out.println("Nombre de docteurs par spécialisation");
             new ChartDocteur();
           }
-          else if (e.getActionCommand().equals("Afficher des infos des docteurs")) {
-            System.out.println("Afficher des infos des docteurs");
-            // GRAPHE 3
+          else if (e.getActionCommand().equals("Nombre de malades par mutuelle")) {
+            System.out.println("Nombre de malades par mutuelle");
+            new ChartMutuelle();
           }
           else if (e.getActionCommand().equals("Quitter")) {
             System.out.println("Quitter");

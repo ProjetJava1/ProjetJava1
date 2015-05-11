@@ -19,8 +19,7 @@ public class Malade {
     private String Mutuelle ="";
     
     
-    public Malade (int Numero, String Nom, String Prénom, String Adresse, String Tel, String Mutuelle) {
-    this.Numero = Numero;
+    public Malade (String Nom, String Prénom, String Adresse, String Tel, String Mutuelle) {
     this.Nom = Nom;
     this.Prénom = Prénom;
     this.Tel = Tel;

@@ -16,8 +16,7 @@ public class Service {
     private String Batiment = "";
     private int Directeur =0;
     
-    public Service(int Id_service, String Code_service,String Nom,String Batiment,int Directeur) {
-    this.Id_service = Id_service;
+    public Service( String Code_service,String Nom,String Batiment,int Directeur) {
     this.Code_service = Code_service;
     this.Nom = Nom;
     this.Batiment = Batiment;

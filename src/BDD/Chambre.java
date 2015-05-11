@@ -16,8 +16,7 @@ public class Chambre {
     private int Surveillant = 0;
     private int Nb_lits =0;
     
-    public Chambre(int Id_chambre, String Code_service,int No_chambre,int Surveillant,int Nb_lits) {
-    this.Id_chambre = Id_chambre;
+    public Chambre(String Code_service,int No_chambre,int Surveillant,int Nb_lits) {
     this.Code_service = Code_service;
     this.No_chambre = No_chambre;
     this.Surveillant = Surveillant;

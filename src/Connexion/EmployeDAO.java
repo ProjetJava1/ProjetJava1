@@ -51,7 +51,6 @@ public class EmployeDAO extends DAO<Employe>{
                                              );
             if(result.first())
             		emp = new Employe(
-                                        id,
                                         result.getString("nom"),
                                         result.getString("prenom"),
                                         result.getString("adresse"),

@@ -9,11 +9,18 @@ package GUI;
  *
  * @author F
  */
+import Connexion.*;
+import BDD.*;
 import java.awt.*;
+import java.sql.*;
 import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.awt.event.*;
 import java.awt.Container;
 import java.awt.Rectangle;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.ResultSetMetaData;
 
 @SuppressWarnings("serial")
 public class Recherche extends JFrame implements ActionListener
@@ -22,6 +29,7 @@ public class Recherche extends JFrame implements ActionListener
         JButton RechEmp;
         JButton RechNPS;
         JButton Quitter;
+        public Connection connect = Connexion.getInstance();
 
         public Recherche()
         {
@@ -82,6 +90,30 @@ public class Recherche extends JFrame implements ActionListener
           }
           else if (e.getActionCommand().equals("Afficher tous les employés")) {
             System.out.println("Afficher tous les employés");
+            try{
+                
+                
+                            ResultSet resultat=this .connect
+                                    .createStatement(
+                                            	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                                ResultSet.CONCUR_UPDATABLE
+                                             ).executeQuery(
+                                                "SELECT nom, prenom FROM employe ORDER BY nom;"
+                                             );
+                        if(resultat.first())
+                            
+                                   ResultSetTableModel rtm = new ResultSetTableModel( rs );
+        
+                                    TablePanel tablePanel = new TablePanel( rtm );
+
+                                   JFrame mainFrame = new JFrame( "Affiche table " );
+                                  mainFrame.add( tablePanel, BorderLayout.CENTER );
+                                  mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+                                   mainFrame.setSize( 640, 480 );
+                                  mainFrame.setVisible( true );
+                        }catch (SQLException f) {
+		            f.printStackTrace();
+		    }
             
 //REQUETE A FAIRE
           }

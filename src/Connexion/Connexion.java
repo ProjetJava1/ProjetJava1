@@ -28,7 +28,7 @@ public class Connexion {
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
     public String login = "root";
-    public String password ="";
+    public String password ="root";
     /**
      * Constructeur avec 4 paramètres : username et password ECE, login et password de la BDD
      */
@@ -54,20 +54,20 @@ public class Connexion {
     public Connexion(String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
+         System.out.println("Connexion en cours...");
+         System.out.println(login);
+         System.out.println(loginDatabase);
 
-        if (loginDatabase == login && passwordDatabase == password) {
             System.out.println("Connexion reussie");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull";
+            String urlDatabase = "jdbc:mysql://localhost:3306/hopital";
 
             //création d'une connexion JDBC à la base
             conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
 
             // création d'un ordre SQL (statement)
             stmt = conn.createStatement();
-
-        }
     }
     public static Connection getInstance(){
 	return conn;	

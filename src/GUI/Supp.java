@@ -7,8 +7,6 @@ package GUI;
 
 import BDD.*;
 import Connexion.*;
-import java.awt.Container;
-import java.awt.Rectangle;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.Connection;
@@ -27,8 +25,7 @@ public class Supp extends JFrame implements ActionListener
     String Service;
     int Code;
     String strCode;
-            public Connection connect = Connexion.getInstance();
-
+    public Connection connect = Connexion.getInstance();
 
     public Supp()
     {
@@ -53,6 +50,7 @@ public class Supp extends JFrame implements ActionListener
     {
         if (e.getSource().equals(comboBox))
         {
+            this.dispose();
             switch ((String)comboBox.getSelectedItem())
             {
             case "Chambre" :
@@ -77,8 +75,6 @@ public class Supp extends JFrame implements ActionListener
                 SupprSoigne();
                 break;
             }
-            System.out.println(comboBox.getSelectedItem());
-            this.dispose();
         }
     }
 
@@ -103,14 +99,13 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
 
-        // SupprChambreFromBase(Id);
-           DAO<Chambre> chambreDAO = new ChambreDAO();
-           chambreDAO.delete(Id);
+        DAO<Chambre> chambreDAO = new ChambreDAO();
+        chambreDAO.delete(Id);
     }
 
     public void SupprDocteur()
@@ -133,14 +128,12 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
-        //SupprDocteurFromBaseId(Id);
-           DAO<Docteur> docteurDAO = new DocteurDAO();
-           docteurDAO.delete(Id);
-
+        DAO<Docteur> docteurDAO = new DocteurDAO();
+        docteurDAO.delete(Id);
     }
 
     public void SupprHospitalisation()
@@ -164,14 +157,13 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
 
-        // SupprHospitalisationFromBase(Id);
         DAO<Hospitalisation> hospitalisationDAO = new HospitalisationDAO();
-           hospitalisationDAO.delete(Id);
+        hospitalisationDAO.delete(Id);
     }
 
     public void SupprInfirmier()
@@ -194,13 +186,12 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
-        //SupprInfirmierFromBaseId(Id);
-           DAO<Infirmier> infirmierDAO = new InfirmierDAO();
-           infirmierDAO.delete(Id);
+        DAO<Infirmier> infirmierDAO = new InfirmierDAO();
+        infirmierDAO.delete(Id);
     }
 
     public void SupprMalade()
@@ -223,13 +214,12 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
-        //SupprMaladeFromBaseId(Id);
-                DAO<Malade> maladeDAO = new MaladeDAO();
-           maladeDAO.delete(Id);
+        DAO<Malade> maladeDAO = new MaladeDAO();
+        maladeDAO.delete(Id);
     }
 
     public void SupprService()
@@ -253,14 +243,13 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
 
-        // SupprServiceFromBase(Id);
         DAO<Service> serviceDAO = new ServiceDAO();
-           serviceDAO.delete(Id);
+        serviceDAO.delete(Id);
     }
 
     public void SupprSoigne()
@@ -271,7 +260,6 @@ public class Supp extends JFrame implements ActionListener
         String strIdMal;
         int IdMal=0;
         int IdSoi=0;
-        
 
         JOptionPane jop = new JOptionPane();
 
@@ -288,7 +276,7 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         } // Fin du while
@@ -306,29 +294,30 @@ public class Supp extends JFrame implements ActionListener
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+                    new ErreurSaisie();
                 }
             }
         }
-        try{
-                            ResultSet resultat=this .connect
-                                    .createStatement(
-                                            	ResultSet.TYPE_SCROLL_INSENSITIVE, 
-                                                ResultSet.CONCUR_UPDATABLE
-                                             ).executeQuery(
-                                               "SELECT * FROM soigne WHERE no_docteur = "+IdDoc+" AND no_malade = "+IdMal
-                                             );
-                        if(resultat.first())
-                            
-                                        IdSoi=resultat.getInt("id_soigne");
-                        }catch (SQLException e) {
-		            e.printStackTrace();
-                        }
+        try
+        {
+            ResultSet resultat=this .connect
+                               .createStatement(
+                                   ResultSet.TYPE_SCROLL_INSENSITIVE,
+                                   ResultSet.CONCUR_UPDATABLE
+                               ).executeQuery(
+                                   "SELECT * FROM soigne WHERE no_docteur = "+IdDoc+" AND no_malade = "+IdMal
+                               );
+            if(resultat.first())
+
+                IdSoi=resultat.getInt("id_soigne");
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
         // Fin du while
-        // SupprSoigneFromBase(IdDoc,IdMal);
-                   DAO<Soigne> soigneDAO = new SoigneDAO();
-           soigneDAO.delete(IdSoi);
-                            
+        DAO<Soigne> soigneDAO = new SoigneDAO();
+        soigneDAO.delete(IdSoi);
     }
 
 }

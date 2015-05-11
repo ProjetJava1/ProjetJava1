@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 /**
@@ -12,7 +7,6 @@ package GUI;
 import Connexion.ChartDocteur;
 import Connexion.ChartMutuelle;
 import Connexion.Charts;
-import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Container;
@@ -20,77 +14,69 @@ import java.awt.Rectangle;
 
 @SuppressWarnings("serial")
 public class Statistiques extends JFrame implements ActionListener
-{	
-        JButton Stat1;
-        JButton Stat2;
-        JButton Stat3;
-        JButton Quitter;
+{
+    JButton Stat1;
+    JButton Stat2;
+    JButton Stat3;
+    JButton Retour;
 
-        public Statistiques()
-        {
-            setTitle("Statistiques");
-            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            
-            this.Stat1 = new JButton("Nombre d'hospitalisations par service");
-            this.Stat2 = new JButton("Nombre de docteurs par spécialisation");
-            this.Stat3 = new JButton("Nombre de malades par mutuelle");// Changer le nom
-            this.Quitter = new JButton("Quitter");
+    public Statistiques()
+    {
+        setTitle("Statistiques");
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-            Container panneau=this.getContentPane();
-            panneau.setLayout(null);
-            
-            Stat1.setBounds(new Rectangle(15,20,250,40));
-            Stat1.setText("Nombre d'hospitalisations par service");
+        this.Stat1 = new JButton("Nombre d'hospitalisations par service");
+        this.Stat2 = new JButton("Nombre de docteurs par spécialisation");
+        this.Stat3 = new JButton("Nombre de malades par mutuelle");// Changer le nom
+        this.Retour = new JButton("Retour");
 
-            Stat2.setBounds(new Rectangle(15,110,250,40));
-            Stat2.setText("Nombre de docteurs par spécialisation");
-            
-            Stat3.setBounds(new Rectangle(15,200,250,40));
-            Stat3.setText("Nombre de malades par mutuelle");
-            
-            Quitter.setBounds(new Rectangle(15,290,250,40));
-            Quitter.setText("Quitter");
-            
-            
-            this.Stat1.addActionListener(this);
-            this.Stat2.addActionListener(this);
-            this.Stat3.addActionListener(this);
-            this.Quitter.addActionListener(this);
+        Container panneau=this.getContentPane();
+        panneau.setLayout(null);
 
-            panneau.add(Stat1);
-            panneau.add(Stat2);
-            panneau.add(Stat3);
-            panneau.add(Quitter);
+        Stat1.setBounds(new Rectangle(15,20,250,40));
+        Stat1.setText("Nombre d'hospitalisations par service");
 
-            setSize(300,400);
-            setVisible(true);
+        Stat2.setBounds(new Rectangle(15,110,250,40));
+        Stat2.setText("Nombre de docteurs par spécialisation");
 
-        }
+        Stat3.setBounds(new Rectangle(15,200,250,40));
+        Stat3.setText("Nombre de malades par mutuelle");
 
-    /*
-        public static void main (String argv[])
-        {
-            new Menu("Page de connexion");
-        }
-    */
+        Retour.setBounds(new Rectangle(15,290,250,40));
+        Retour.setText("Retour");
+
+        this.Stat1.addActionListener(this);
+        this.Stat2.addActionListener(this);
+        this.Stat3.addActionListener(this);
+        this.Retour.addActionListener(this);
+
+        panneau.add(Stat1);
+        panneau.add(Stat2);
+        panneau.add(Stat3);
+        panneau.add(Retour);
+
+        setSize(300,400);
+        setVisible(true);
+    }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-    if (e.getActionCommand().equals("Nombre d'hospitalisations par service")) {
-            System.out.println("Nombre d'hospitalisations par service");
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getActionCommand().equals("Nombre d'hospitalisations par service"))
+        {
             new Charts();
-          }
-          else if (e.getActionCommand().equals("Nombre de docteurs par spécialisation")) {
-            System.out.println("Nombre de docteurs par spécialisation");
+        }
+        else if (e.getActionCommand().equals("Nombre de docteurs par spécialisation"))
+        {
             new ChartDocteur();
-          }
-          else if (e.getActionCommand().equals("Nombre de malades par mutuelle")) {
-            System.out.println("Nombre de malades par mutuelle");
+        }
+        else if (e.getActionCommand().equals("Nombre de malades par mutuelle"))
+        {
             new ChartMutuelle();
-          }
-          else if (e.getActionCommand().equals("Quitter")) {
-            System.out.println("Quitter");
+        }
+        else if (e.getActionCommand().equals("Retour"))
+        {
             this.dispose();
-          }
+        }
     }
 }

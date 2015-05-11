@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
-
-
 
 /**
  *
  * @author F
  */
-import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
-
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame implements ActionListener
@@ -23,7 +14,6 @@ public class GUI extends JFrame implements ActionListener
     String ServeurECE;
     JPasswordField mdpECE;
     String password1;
-
     
     public GUI()
     {
@@ -47,13 +37,8 @@ public class GUI extends JFrame implements ActionListener
             this.setVisible(true);
         }
         else System.exit(0);
-        
-
     }
 
-
-    
-    
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -64,16 +49,11 @@ public class GUI extends JFrame implements ActionListener
             this.dispose();
             new GUI2(ServeurECE,password1);
         }
-        
     }
 
     public static void main (String argv[])
     {
-        //new Menu("a","b","c");
         new OnOff();
-        //new Menu("Menu");
-        //new SwingApp("Page de connexion");
-        //new Recherche();
     }
 
 }

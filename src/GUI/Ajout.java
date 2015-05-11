@@ -175,7 +175,7 @@ public class Ajout extends JFrame implements ActionListener
     public void AjoutDocteur() 
     {
         int test=0;
-        String Specialite;
+        String Specialite=null;
         
         JOptionPane jop = new JOptionPane();
         
@@ -184,12 +184,14 @@ public class Ajout extends JFrame implements ActionListener
         if ((Specialite!=null) && (!Specialite.isEmpty())) test=1;
         }
         
-        AjoutEmploye();
-
+        DAO<Docteur> docDAO = new DocteurDAO();
+        Docteur doc = new Docteur(Specialite);
+        docDAO.create(doc);
+        this.dispose();
         // AddDocteurToBase(Specialite,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
     }
     
-    public void AjoutEmploye() 
+    public Employe AjoutEmploye() 
     {
         int test=0;
         
@@ -215,8 +217,11 @@ public class Ajout extends JFrame implements ActionListener
         if ((TelephoneEmp!=null) && (!TelephoneEmp.isEmpty())) test=4;
         }
         
-
+        DAO<Employe> employeDAO = new EmployeDAO();
+        Employe emp = new Employe(NomEmp,PrenomEmp, AdresseEmp, TelephoneEmp );
+        employeDAO.create(emp);
         // AddEmployeToBase(Num,Nom,Prenom,Adresse,Telephone);
+        return emp;
     }
         
     public void AjoutHospitalisation() 
@@ -288,10 +293,10 @@ public class Ajout extends JFrame implements ActionListener
     public void AjoutInfirmier() 
     {
         int test=0;
-        String Code_Service;
-        String Rotation;
-        String strSalaire;
-        float Salaire;
+        String Code_Service=null;
+        String Rotation=null;
+        String strSalaire=null;
+        float Salaire=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -302,7 +307,7 @@ public class Ajout extends JFrame implements ActionListener
         
         while (test==1) {
         Rotation = jop.showInputDialog(null, "Entrer sa rotation (jour ou nuit)", "Rotation", JOptionPane.QUESTION_MESSAGE);
-        if ((Rotation=="jour") || (Rotation=="nuit")) test=2;
+        if ((Rotation!=null) && (!Rotation.isEmpty())) test=2;
         }
                 
         while (test==2) {
@@ -318,8 +323,10 @@ public class Ajout extends JFrame implements ActionListener
             }
         }
         } // Fin du while
-        
-        AjoutEmploye();
+        DAO<Infirmier> infDAO = new InfirmierDAO();
+        Infirmier inf = new Infirmier(Code_Service, Rotation, Salaire);
+        infDAO.create(inf);
+        this.dispose();
         
         // AddInfirmierToBase(Code_Service,Rotation,Salaire,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
     }
@@ -327,11 +334,11 @@ public class Ajout extends JFrame implements ActionListener
     public void AjoutMalade() 
     {
         int test=0;
-        String Nom;
-        String Prenom;
-        String Adresse;
-        String Telephone;
-        String Mutuelle;
+        String Nom=null;
+        String Prenom=null;
+        String Adresse=null;
+        String Telephone=null;
+        String Mutuelle=null;
 
         JOptionPane jop = new JOptionPane();
         
@@ -346,32 +353,32 @@ public class Ajout extends JFrame implements ActionListener
         }
                 
         while (test==2) {
-        Adresse = jop.showInputDialog(null, "Entrer le code de la chambre", "Code", JOptionPane.QUESTION_MESSAGE);
-        if ((Adresse!=null) && (!Adresse.isEmpty())) test=3;
+        Adresse = jop.showInputDialog(null, "Entrer son adresse", "Adresse", JOptionPane.QUESTION_MESSAGE);
+        if ((Adresse!=null) && (!Adresse.isEmpty())) test=4;
         }
                         
         while (test==3) {
-        Telephone = jop.showInputDialog(null, "Entrer son adresse", "Adresse", JOptionPane.QUESTION_MESSAGE);
-        if ((Telephone!=null) && (!Telephone.isEmpty())) test=4;
+        Telephone = jop.showInputDialog(null, "Entrer son numéro de téléphone", "Telephone", JOptionPane.QUESTION_MESSAGE);
+        if ((Telephone!=null) && (!Telephone.isEmpty())) test=3;
         }
                                 
         while (test==4) {
         Mutuelle = jop.showInputDialog(null, "Entrer le nom de sa mutuelle", "Mutuelle", JOptionPane.QUESTION_MESSAGE);
         if ((Mutuelle!=null) && (!Mutuelle.isEmpty())) test=5;
         }
-        
-        // AddMaladeToBase(Num,Nom,Prenom,Adresse,Telephone,Mutuelle);
+           DAO<Malade> maladeDAO = new MaladeDAO();
+           Malade mal = new Malade(Nom, Prenom, Adresse, Telephone, Mutuelle);
+           maladeDAO.create(mal);
     }
     
     public void AjoutService() 
     {
         int test=0;
-        String Code;
-        String Nom;
-        char Batiment;
-        String strBatiment;
-        String strNumDirecteur;
-        int NumDirecteur;
+        String Code=null;
+        String Nom=null;
+        String strBatiment=null;
+        String strNumDirecteur=null;
+        int NumDirecteur=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -399,17 +406,18 @@ public class Ajout extends JFrame implements ActionListener
         }
         } // Fin du while
         
-        while (test==3) {
+         while (test==3) {
         strBatiment = jop.showInputDialog(null, "Entrer nom du batiment", "Batiment", JOptionPane.QUESTION_MESSAGE);
 
-        if ((strBatiment!=null) && (!strBatiment.isEmpty()) && (strBatiment.length()==1)) {
-
-                Batiment = strBatiment.charAt(0);
+        if ((strBatiment!=null) && (!strBatiment.isEmpty())) {
                 test=4;
             }
+        
         }// Fin du while
         
-        // AddServiceToBase(Code,Nom,Batiment,NumDirecteur);
+        DAO<Service> serviceDAO = new ServiceDAO();
+           Service ser = new Service(Code, Nom, strBatiment, NumDirecteur);
+           serviceDAO.create(ser);    
     } 
              
     public void AjoutSoigne() 
@@ -417,8 +425,8 @@ public class Ajout extends JFrame implements ActionListener
         int test=0;
         String strNumDocteur;
         String strNumMalade;
-        int NumDocteur;
-        int NumMalade;
+        int NumDocteur=0;
+        int NumMalade=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -451,6 +459,8 @@ public class Ajout extends JFrame implements ActionListener
         } // Fin du while
              
         
-        //AddSoigneToBase(NumDocteur,NumMalade);
+           DAO<Soigne> soigneDAO = new SoigneDAO();
+           Soigne soi = new Soigne(NumDocteur, NumMalade);
+           soigneDAO.create(soi);
     }
 }

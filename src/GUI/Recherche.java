@@ -116,15 +116,13 @@ public class Recherche extends JFrame implements ActionListener
 		            f.printStackTrace();
 		    }
             
-//REQUETE A FAIRE
           }
           else if (e.getActionCommand().equals("Afficher des infos des docteurs")) {
             System.out.println("Afficher des infos des docteurs");
             //REQUETE A FAIRE
           }
-          else if (e.getActionCommand().equals("Quitter")) {
-            System.out.println("Quitter");
-            System.exit(0); // Quitte le programme
-          }
+          else if (e.getActionCommand().equals("Retour")) {
+            System.out.println("Retour");
+            this.dispose();          }
     }
 }

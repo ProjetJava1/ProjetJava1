@@ -54,17 +54,15 @@ public class OnOff extends JFrame implements ActionListener
         @Override
     public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("Connexion online")) {
-            System.out.println("connexion online");
-            on_off=1;           
+            System.out.println("connexion online");          
             this.dispose(); // Ferme la fenêtre
 
-            new GUI(on_off);
+            new GUI();
           }
           else if (e.getActionCommand().equals("Connexion offline")) {
             System.out.println("connexion offline");
-            on_off=2;
             this.dispose(); // Ferme la fenêtre
-            new GUI(on_off);
+            new Offline();
     }
         
         

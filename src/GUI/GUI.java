@@ -25,7 +25,7 @@ public class GUI extends JFrame implements ActionListener
     String password1;
 
     
-    public GUI(int on_off)
+    public GUI()
     {
         JOptionPane jop = new JOptionPane();
 

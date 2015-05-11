@@ -40,7 +40,7 @@ public class Ajout extends JFrame implements ActionListener
         theToolbar.setFloatable(true);
         JLabel theLabel = new JLabel("Choisissez votre table ");
         theToolbar.add(theLabel);
-        String[] items = {"Chambre", "Docteur", "Employé", "Hospitalisation", "Infirmier","Malade","Service","Soigne"};
+        String[] items = {"Chambre", "Docteur", "Hospitalisation", "Infirmier","Malade","Service","Soigne"};
         comboBox = new JComboBox<String>(items);
         comboBox.addActionListener(this);
         theToolbar.add(comboBox);
@@ -49,30 +49,12 @@ public class Ajout extends JFrame implements ActionListener
         this.setVisible(true);
     }
     
-    public void AjoutInfo(String Service)
-    {
-        JOptionPane jop = new JOptionPane();
-        JOptionPane jop2 = new JOptionPane();
-        strCode = jop.showInputDialog(null, "Entrer le code du service", "Code", JOptionPane.QUESTION_MESSAGE);
-        Nom = jop.showInputDialog(null, "Entrer le nom du service", "Nom", JOptionPane.QUESTION_MESSAGE);
-        Batiment = jop.showInputDialog(null, "Entrer le batiment", "Batiment", JOptionPane.QUESTION_MESSAGE);
-        Directeur = jop.showInputDialog(null, "Entrer le directeur du service", "Directeur", JOptionPane.QUESTION_MESSAGE);
-        
-// Si non vide ni "annuler"
-        if (((strCode!=null) && (!strCode.isEmpty())) &&((Nom!=null) && (!Nom.isEmpty())) && ((Batiment!=null)&&(!Batiment.isEmpty())) && ((Directeur!=null)&&(!Directeur.isEmpty())))
-        {
-            jop2.showMessageDialog(null, "Le code est: " + strCode + "\nLa nom est: " + Nom + "\nLe batiment est: "+Batiment+  "\nLe directeur est: "+ Directeur, "Ajout", JOptionPane.INFORMATION_MESSAGE);
-            // AddToBase(Service,Code,Nom,Batiment,Directeur);
-            System.out.println(Service);
-        }
-            
-    }
-    
     @Override
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource().equals(comboBox))
         {
+            this.dispose();
             switch ((String)comboBox.getSelectedItem())
                     {
                 case "Chambre" :
@@ -80,9 +62,6 @@ public class Ajout extends JFrame implements ActionListener
                     break;
                 case "Docteur" :
                     AjoutDocteur();
-                    break;
-                case "Employé" :
-                    AjoutEmploye();
                     break;
                 case "Hospitalisation" :
                     AjoutHospitalisation();
@@ -101,8 +80,6 @@ public class Ajout extends JFrame implements ActionListener
                     break;
             }
             System.out.println(comboBox.getSelectedItem());
-            this.dispose();
-            //AjoutInfo((String)comboBox.getSelectedItem());
         }
     }
 
@@ -188,7 +165,6 @@ public class Ajout extends JFrame implements ActionListener
         Docteur doc = new Docteur(Specialite);
         docDAO.create(doc);
         this.dispose();
-        // AddDocteurToBase(Specialite,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
     }
     
     public Employe AjoutEmploye() 
@@ -220,7 +196,6 @@ public class Ajout extends JFrame implements ActionListener
         DAO<Employe> employeDAO = new EmployeDAO();
         Employe emp = new Employe(NomEmp,PrenomEmp, AdresseEmp, TelephoneEmp );
         employeDAO.create(emp);
-        // AddEmployeToBase(Num,Nom,Prenom,Adresse,Telephone);
         return emp;
     }
         
@@ -284,7 +259,6 @@ public class Ajout extends JFrame implements ActionListener
         }
         } // Fin du while
         
-        // AddHospitalisationToBase(NumMalade,Code_Service,NumChambre,NumLit);
         DAO<Hospitalisation> hospitalisationDAO = new HospitalisationDAO();
            Hospitalisation hos = new Hospitalisation(NumMalade, Code_Service, NumChambre, NumLit);
            hospitalisationDAO.create(hos);
@@ -328,7 +302,6 @@ public class Ajout extends JFrame implements ActionListener
         infDAO.create(inf);
         this.dispose();
         
-        // AddInfirmierToBase(Code_Service,Rotation,Salaire,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
     }
         
     public void AjoutMalade() 

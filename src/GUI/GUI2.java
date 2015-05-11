@@ -9,15 +9,18 @@ package GUI;
  *
  * @author F
  */
+import Connexion.Connexion;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 
 @SuppressWarnings("serial")
 public class GUI2 extends JFrame implements ActionListener
 {
+    private Connexion maconnexion;
 
     String Login;
     JPasswordField mdpBase;
@@ -63,9 +66,20 @@ public class GUI2 extends JFrame implements ActionListener
         {
             char[] thePassword2 = mdpBase.getPassword();
             password2 = new String(thePassword2);
-            System.out.println("Password Base is " + password2);
             this.dispose();
-           
+            try {
+                try {
+                    // tentative de connexion si les 4 attributs sont remplis
+                    maconnexion = new Connexion(ServeurECE, password1, Login, password2);
+                } catch (ClassNotFoundException cnfe) {
+                    System.out.println("Connexion echouee : probleme de classe");
+                    cnfe.printStackTrace();
+                }
+            } catch (SQLException f) {
+                System.out.println("Connexion echouee : probleme SQL");
+                f.printStackTrace();
+            }
+            new Menu(maconnexion);
             //new OuvertureBase(ServeurECE,password1, Login,password2);
             
         }

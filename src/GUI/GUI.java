@@ -59,7 +59,6 @@ public class GUI extends JFrame implements ActionListener
         {
             char[] thePassword1 = mdpECE.getPassword();
             String password1 = new String(thePassword1);
-            System.out.println("Password ECE is " + password1);
             this.dispose();
             new GUI2(ServeurECE,password1);
         }

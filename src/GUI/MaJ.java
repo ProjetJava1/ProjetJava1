@@ -83,6 +83,8 @@ public class MaJ extends JFrame implements ActionListener
           }
           else if (e.getActionCommand().equals("Modifier")) {
             System.out.println("Modifier");
+            this.dispose();
+            new Modifier();
           }
           else if (e.getActionCommand().equals("Retour")) {
             System.out.println("Retour");

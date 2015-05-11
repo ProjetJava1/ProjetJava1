@@ -60,7 +60,6 @@ public class ChambreDAO extends DAO<Chambre>{
                                              );
             if(result.first())
             		ch = new Chambre(
-                                        id,
                                         result.getString("code_service"),
                                         result.getInt("no_chambre"),
                                         result.getInt("surveillant"),

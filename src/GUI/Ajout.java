@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import BDD.*;
+import Connexion.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -107,22 +109,22 @@ public class Ajout extends JFrame implements ActionListener
     public void AjoutChambre() 
     {
         int test=0;
-        String Code_Service;
+        String Code_Service="";
         String strNumSurv;
         String strNbLits;
         String strNumChambre;
-        int NumSurv;
-        int NbLits;
-        int NumChambre;
+        int NumSurv=0;
+        int NbLits=0;
+        int NumChambre=0;
         
         JOptionPane jop = new JOptionPane();
         while (test==0) {
-        Code_Service = jop.showInputDialog(null, "Entrer le code de la chambre", "Code", JOptionPane.QUESTION_MESSAGE);
+        Code_Service = jop.showInputDialog(null, "Entrer le code service de la chambre", "Code", JOptionPane.QUESTION_MESSAGE);
         if ((Code_Service!=null) && (!Code_Service.isEmpty())) test=1;
         }
         
         while (test==1) {
-        strNumChambre = jop.showInputDialog(null, "Entrer le nombre de lits", "Nombre de lits", JOptionPane.QUESTION_MESSAGE);
+        strNumChambre = jop.showInputDialog(null, "Entrer le numero de la chambre", "Numéro de la chambre", JOptionPane.QUESTION_MESSAGE);
 
         if ((strNumChambre!=null) && (!strNumChambre.isEmpty())) {
             try {
@@ -163,7 +165,10 @@ public class Ajout extends JFrame implements ActionListener
         }
         } // Fin du while
         
-         //AddChambreToBase(Code_Service,NumChambre,NumSurv,NbLits);
+         //Ajout de la Chambre à la base
+           DAO<Chambre> chambreDAO = new ChambreDAO();
+           Chambre ch = new Chambre(Code_Service, NumChambre, NumSurv, NbLits);
+           chambreDAO.create(ch);
 
     }
     
@@ -217,13 +222,13 @@ public class Ajout extends JFrame implements ActionListener
     public void AjoutHospitalisation() 
     {
         int test=0;
-        String Code_Service;
+        String Code_Service="";
         String strNumChambre;
         String strNumMalade;
         String strNumLit;
-        int NumChambre;
-        int NumMalade;
-        int NumLit;
+        int NumChambre=0;
+        int NumMalade=0;
+        int NumLit=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -275,6 +280,9 @@ public class Ajout extends JFrame implements ActionListener
         } // Fin du while
         
         // AddHospitalisationToBase(NumMalade,Code_Service,NumChambre,NumLit);
+        DAO<Hospitalisation> hospitalisationDAO = new HospitalisationDAO();
+           Hospitalisation hos = new Hospitalisation(NumMalade, Code_Service, NumChambre, NumLit);
+           hospitalisationDAO.create(hos);
     }
 
     public void AjoutInfirmier() 

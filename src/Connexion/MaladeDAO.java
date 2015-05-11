@@ -51,7 +51,6 @@ public class MaladeDAO extends DAO<Malade>{
                                              );
             if(result.first())
             		mal = new Malade(
-                                        id,
                                         result.getString("nom"),
                                         result.getString("prenom"),
                                         result.getString("adresse"),

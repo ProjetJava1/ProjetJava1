@@ -17,8 +17,7 @@ public class Employe {
     private String Tel = "";
     
     
-    public Employe (int Numero, String Nom, String Prénom, String Adresse, String Tel) {
-    this.Numero = Numero;
+    public Employe ( String Nom, String Prénom, String Adresse, String Tel) {
     this.Nom = Nom;
     this.Prénom = Prénom;
     this.Adresse = Adresse;

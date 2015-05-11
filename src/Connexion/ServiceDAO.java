@@ -61,7 +61,6 @@ public class ServiceDAO extends DAO<Service>{
                                              );
             if(result.first())
             		serv = new Service(
-                                        id,
                                         result.getString("code"),
                                         result.getString("nom"),
                                         result.getString("batiment"),

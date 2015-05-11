@@ -21,7 +21,7 @@ public class Menu extends JFrame implements ActionListener
         JButton Stat;
         JButton Quitter;
 
-        public Menu(String Serveur,String Base, String Login)
+        public Menu()
         {
             setTitle("Menu");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

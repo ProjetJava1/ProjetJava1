@@ -29,6 +29,7 @@ public class Recherche extends JFrame implements ActionListener
         JButton RechDoct;
         JButton RechEmp;
         JButton RechNPS;
+        JButton RechAll;
         JButton Retour;
         public Connection connect = Connexion.getInstance();
 
@@ -41,6 +42,7 @@ public class Recherche extends JFrame implements ActionListener
             this.RechDoct = new JButton("Patients affiliés à un docteur");
             this.RechEmp = new JButton("Afficher tous les employés");
             this.RechNPS = new JButton("Afficher des infos des docteurs");
+            this.RechAll = new JButton("Afficher les infos d'une classe");
             this.Retour = new JButton("Retour");
 
             Container panneau=this.getContentPane();
@@ -56,20 +58,24 @@ public class Recherche extends JFrame implements ActionListener
             RechNPS.setText("Afficher des infos des docteurs");
             
             Retour.setBounds(new Rectangle(15,290,250,40));
-            Retour.setText("Retour");
+            Retour.setText("Afficher les infos d'une classe");
             
+            Retour.setBounds(new Rectangle(15,380,250,40));
+            Retour.setText("Retour");
             
             this.RechDoct.addActionListener(this);
             this.RechEmp.addActionListener(this);
             this.RechNPS.addActionListener(this);
+            this.RechAll.addActionListener(this);
             this.Retour.addActionListener(this);
-
+            
             panneau.add(RechDoct);
             panneau.add(RechEmp);
             panneau.add(RechNPS);
+            panneau.add(RechAll);
             panneau.add(Retour);
 
-            setSize(300,400);
+            setSize(300,490);
             setVisible(true);
 
         }
@@ -141,6 +147,10 @@ public class Recherche extends JFrame implements ActionListener
                   }catch (SQLException f) {
                       f.printStackTrace();
               }
+          }
+          else if (e.getActionCommand().equals("Afficher les infos d'une classe")) {
+            System.out.println("Afficher les infos d'une classe");
+            new RechercheAll();
           }
           else if (e.getActionCommand().equals("Retour")) {
             System.out.println("Retour");

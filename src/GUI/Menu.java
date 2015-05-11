@@ -86,6 +86,7 @@ public class Menu extends JFrame implements ActionListener
           }
           else if (e.getActionCommand().equals("Statistiques")) {
             System.out.println("Statistiques");
+            new Statistiques();
           }
           else if (e.getActionCommand().equals("Quitter")) {
             System.out.println("Quitter");

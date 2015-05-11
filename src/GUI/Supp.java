@@ -5,10 +5,15 @@
  */
 package GUI;
 
+import BDD.*;
+import Connexion.*;
 import java.awt.Container;
 import java.awt.Rectangle;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -22,6 +27,8 @@ public class Supp extends JFrame implements ActionListener
     String Service;
     int Code;
     String strCode;
+            public Connection connect = Connexion.getInstance();
+
 
     public Supp()
     {
@@ -79,7 +86,7 @@ public class Supp extends JFrame implements ActionListener
     {
         int test=0;
         String strId;
-        int Id;
+        int Id=0;
 
         JOptionPane jop = new JOptionPane();
 
@@ -102,13 +109,15 @@ public class Supp extends JFrame implements ActionListener
         } // Fin du while
 
         // SupprChambreFromBase(Id);
+           DAO<Chambre> chambreDAO = new ChambreDAO();
+           chambreDAO.delete(Id);
     }
 
     public void SupprDocteur()
     {
         int test=0;
         String strId;
-        int Id;
+        int Id=0;
 
         JOptionPane jop = new JOptionPane();
         while (test==0)
@@ -129,6 +138,8 @@ public class Supp extends JFrame implements ActionListener
             }
         } // Fin du while
         //SupprDocteurFromBaseId(Id);
+           DAO<Docteur> docteurDAO = new DocteurDAO();
+           docteurDAO.delete(Id);
 
     }
 
@@ -136,7 +147,7 @@ public class Supp extends JFrame implements ActionListener
     {
         int test=0;
         String strId;
-        int Id;
+        int Id=0;
 
         JOptionPane jop = new JOptionPane();
 
@@ -159,13 +170,15 @@ public class Supp extends JFrame implements ActionListener
         } // Fin du while
 
         // SupprHospitalisationFromBase(Id);
+        DAO<Hospitalisation> hospitalisationDAO = new HospitalisationDAO();
+           hospitalisationDAO.delete(Id);
     }
 
     public void SupprInfirmier()
     {
         int test=0;
         String strId;
-        int Id;
+        int Id=0;
 
         JOptionPane jop = new JOptionPane();
         while (test==0)
@@ -186,13 +199,15 @@ public class Supp extends JFrame implements ActionListener
             }
         } // Fin du while
         //SupprInfirmierFromBaseId(Id);
+           DAO<Infirmier> infirmierDAO = new InfirmierDAO();
+           infirmierDAO.delete(Id);
     }
 
     public void SupprMalade()
     {
         int test=0;
         String strId;
-        int Id;
+        int Id=0;
 
         JOptionPane jop = new JOptionPane();
         while (test==0)
@@ -213,13 +228,15 @@ public class Supp extends JFrame implements ActionListener
             }
         } // Fin du while
         //SupprMaladeFromBaseId(Id);
+                DAO<Malade> maladeDAO = new MaladeDAO();
+           maladeDAO.delete(Id);
     }
 
     public void SupprService()
     {
         int test=0;
         String strId;
-        int Id;
+        int Id=0;
 
         JOptionPane jop = new JOptionPane();
 
@@ -242,15 +259,19 @@ public class Supp extends JFrame implements ActionListener
         } // Fin du while
 
         // SupprServiceFromBase(Id);
+        DAO<Service> serviceDAO = new ServiceDAO();
+           serviceDAO.delete(Id);
     }
 
     public void SupprSoigne()
     {
         int test=0;
         String strIdDoc;
-        int IdDoc;
+        int IdDoc=0;
         String strIdMal;
-        int IdMal;
+        int IdMal=0;
+        int IdSoi=0;
+        
 
         JOptionPane jop = new JOptionPane();
 
@@ -288,8 +309,26 @@ public class Supp extends JFrame implements ActionListener
                     System.out.println("Erreur : Veuillez entrer un nombre uniquement");
                 }
             }
-        } // Fin du while
+        }
+        try{
+                            ResultSet resultat=this .connect
+                                    .createStatement(
+                                            	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                                ResultSet.CONCUR_UPDATABLE
+                                             ).executeQuery(
+                                               "SELECT * FROM soigne WHERE no_docteur = "+IdDoc+" AND no_malade = "+IdMal
+                                             );
+                        if(resultat.first())
+                            
+                                        IdSoi=resultat.getInt("id_soigne");
+                        }catch (SQLException e) {
+		            e.printStackTrace();
+                        }
+        // Fin du while
         // SupprSoigneFromBase(IdDoc,IdMal);
+                   DAO<Soigne> soigneDAO = new SoigneDAO();
+           soigneDAO.delete(IdSoi);
+                            
     }
 
 }

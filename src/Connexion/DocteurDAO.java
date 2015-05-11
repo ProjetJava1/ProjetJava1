@@ -110,7 +110,7 @@ public class DocteurDAO extends DAO<Docteur>{
                                          );
         if(result2.first()){
                 //Le message
-                System.out.println("Malade dans soigne");
+                System.out.println("Docteur dans soigne");
             
         }
         else this    .connect
@@ -118,7 +118,13 @@ public class DocteurDAO extends DAO<Docteur>{
                              ResultSet.TYPE_SCROLL_INSENSITIVE, 
                              ResultSet.CONCUR_UPDATABLE
                         ).executeUpdate(
-                             "DELETE FROM docteur WHERE numero = " + id+
+                             "DELETE FROM docteur WHERE numero = " + id
+                        );
+        this    .connect
+                    	.createStatement(
+                             ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                             ResultSet.CONCUR_UPDATABLE
+                        ).executeUpdate(
                              "DELETE FROM employe WHERE numero = " + id
                         );
 			

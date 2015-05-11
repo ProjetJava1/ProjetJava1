@@ -20,17 +20,12 @@ public class Ajout extends JFrame implements ActionListener
 {
     JToolBar theToolbar;
     JComboBox<String> comboBox;
-    String strCode;
-    String Nom;
-    String Batiment;
-    String Directeur;
     
     String NomEmp;
     String PrenomEmp;
     String AdresseEmp;
     String TelephoneEmp;  
     
-
     public Ajout()
     {
         super("Ajout de données");

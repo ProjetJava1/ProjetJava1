@@ -346,7 +346,7 @@ public class Modifier extends JFrame implements ActionListener
         
         while (test==1) {
         Rotation = jop.showInputDialog(null, "Entrer sa rotation (jour ou nuit)", "Rotation", JOptionPane.QUESTION_MESSAGE);
-        if ((Rotation=="jour") || (Rotation=="nuit")) test=2;
+        if ((Rotation!=null) && (!Rotation.isEmpty())) test=2;
         }
                 
         while (test==2) {

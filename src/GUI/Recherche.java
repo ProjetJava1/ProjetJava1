@@ -106,8 +106,7 @@ public class Recherche extends JFrame implements ActionListener
                             TablePanel tablePanel = new TablePanel( rtm );
 
                             JFrame mainFrame = new JFrame( "Affiche table " );
-                            mainFrame.add( tablePanel, BorderLayout.CENTER );
-                            mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+                            mainFrame.add( tablePanel, BorderLayout.CENTER );                          
                             mainFrame.setSize( 640, 480 );
                             mainFrame.setVisible( true );
 

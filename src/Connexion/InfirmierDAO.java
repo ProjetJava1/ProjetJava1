@@ -5,6 +5,7 @@
  */
 package Connexion;
 import BDD.*;
+import GUI.Ajout;
 import java.sql.*;
 /**
  *
@@ -15,20 +16,17 @@ public class InfirmierDAO extends DAO<Infirmier>{
     public Infirmier create(Infirmier obj) {
 		try {
                         int id=0;
-                        String nom="Crapaud";
-                        String prenom="Jean-Michel";
-                        String adresse="La River";
-                        String tel="010";
-			DAO<Employe> employeDAO = new EmployeDAO();
-                        Employe emp = new Employe(nom,prenom,adresse,tel );
-                        employeDAO.create(emp);
+
+                        Ajout aj= new Ajout();
+                        Employe emp = aj.AjoutEmploye();
+                      
                         try{
                             ResultSet resultat=this .connect
                                     .createStatement(
                                             	ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                                 ResultSet.CONCUR_UPDATABLE
                                              ).executeQuery(
-                                                "SELECT * FROM employe WHERE prenom = '"+prenom+"'AND nom='"+nom+"'"
+                                                "SELECT * FROM employe WHERE prenom = '"+emp.getPrénom()+"'AND nom='"+emp.getNom()+"'"
                                              );
                         if(resultat.first())
                             

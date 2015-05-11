@@ -6,6 +6,7 @@
 package Connexion;
 import BDD.*;
 import java.sql.*;
+import GUI.Ajout;
 /**
  *
  * @author Arnaud
@@ -14,21 +15,17 @@ public class DocteurDAO extends DAO<Docteur>{
     @Override
     public Docteur create(Docteur obj) {
 		try {
-                        int id=0;
-                        String nom="Crapaud";
-                        String prenom="Jean-Michel";
-                        String adresse="La River";
-                        String tel="010";
-			DAO<Employe> employeDAO = new EmployeDAO();
-                        Employe emp = new Employe(nom,prenom,adresse,tel );
-                        employeDAO.create(emp);
+                    int id=0;
+                        Ajout aj= new Ajout();
+                        Employe emp = aj.AjoutEmploye();
+                        
                         try{
                             ResultSet resultat=this .connect
                                     .createStatement(
                                             	ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                                 ResultSet.CONCUR_UPDATABLE
                                              ).executeQuery(
-                                                "SELECT * FROM employe WHERE prenom = '"+prenom+"'AND nom='"+nom+"'"
+                                                "SELECT * FROM employe WHERE prenom = '"+emp.getPrénom()+"'AND nom='"+emp.getNom()+"'"
                                              );
                         if(resultat.first())
                             
@@ -109,7 +106,7 @@ public class DocteurDAO extends DAO<Docteur>{
                                             ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                             ResultSet.CONCUR_UPDATABLE
                                          ).executeQuery(
-                                            "SELECT * FROM soigne WHERE no_malade = " + id
+                                            "SELECT * FROM soigne WHERE no_docteur = " + id
                                          );
         if(result2.first()){
                 //Le message

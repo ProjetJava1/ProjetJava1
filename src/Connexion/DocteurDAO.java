@@ -7,6 +7,7 @@ package Connexion;
 import BDD.*;
 import java.sql.*;
 import GUI.Ajout;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Arnaud
@@ -111,6 +112,8 @@ public class DocteurDAO extends DAO<Docteur>{
         if(result2.first()){
                 //Le message
                 System.out.println("Docteur dans soigne");
+                JOptionPane jop2 = new JOptionPane(); 
+             jop2.showMessageDialog(null, "Suppression impossible: Le docteur soigne un malade", "Erreur", JOptionPane.INFORMATION_MESSAGE);
             
         }
         else this    .connect

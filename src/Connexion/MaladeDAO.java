@@ -6,6 +6,7 @@
 package Connexion;
 import BDD.*;
 import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Arnaud
@@ -108,14 +109,20 @@ public class MaladeDAO extends DAO<Malade>{
                                          ).executeQuery(
                                             "SELECT * FROM soigne WHERE no_malade = " + id
                                          );
-        if(result.first() || result2.first()){
+              if(result.first() || result2.first()){
             if(result.first()){
                 //Le message
                 System.out.println("Malade dans hospitalisation");
+                JOptionPane jop = new JOptionPane(); 
+        jop.showMessageDialog(null, "Suppression impossible: Le malade est hospitalisé", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+
             }
-            if(result2.first()){
+           else if(result2.first()){
                 //Le message
                 System.out.println("Malade dans soigne");
+                JOptionPane jop2 = new JOptionPane(); 
+        jop2.showMessageDialog(null, "Suppression impossible: Le malade est soigné", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+
             }
         }
         else   this    .connect

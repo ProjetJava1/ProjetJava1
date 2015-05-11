@@ -22,6 +22,8 @@ public class GUI extends JFrame implements ActionListener
     JPasswordField mdpECE;
     String Login;
     JPasswordField mdpBase;
+    String password1;
+    String password2;
 
     public GUI(int on_off)
     {
@@ -72,20 +74,17 @@ public class GUI extends JFrame implements ActionListener
         if (e.getSource().equals(mdpECE))
         {
             char[] thePassword1 = mdpECE.getPassword();
-            String password1 = new String(thePassword1);
+            password1 = new String(thePassword1);
             System.out.println("Password ECE is " + password1);
             this.dispose();
-            // TestOpenBaseECE(ServeurECE,password1);
-            //new Menu(Serveur,Base,Login);
         }
         else if (e.getSource().equals(mdpBase))
         {
             char[] thePassword2 = mdpBase.getPassword();
-            String password2 = new String(thePassword2);
+            password2 = new String(thePassword2);
             System.out.println("Password Base is " + password2);
             this.dispose();
-            new Menu(ServeurECE,password2, Login);
-            // TestOpenBase(ServeurECE,password2);
+            new OuvertureBase(ServeurECE,password1, Login,password2);
         }
     }
 

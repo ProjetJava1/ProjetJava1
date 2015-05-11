@@ -57,8 +57,8 @@ public class Recherche extends JFrame implements ActionListener
             RechNPS.setBounds(new Rectangle(15,200,250,40));
             RechNPS.setText("Afficher des infos des docteurs");
             
-            Retour.setBounds(new Rectangle(15,290,250,40));
-            Retour.setText("Afficher les infos d'une classe");
+            RechAll.setBounds(new Rectangle(15,290,250,40));
+            RechAll.setText("Afficher les infos d'une classe");
             
             Retour.setBounds(new Rectangle(15,380,250,40));
             Retour.setText("Retour");
@@ -111,7 +111,7 @@ public class Recherche extends JFrame implements ActionListener
                       ResultSetTableModel rtm = new ResultSetTableModel( resultat );
                       TablePanel tablePanel = new TablePanel( rtm );
 
-                      JFrame mainFrame = new JFrame( "Affiche table " );
+                      JFrame mainFrame = new JFrame( "Affiche tout les employés " );
                       mainFrame.add( tablePanel, BorderLayout.CENTER );                          
                       mainFrame.setSize( 640, 480 );
                       mainFrame.setVisible( true );
@@ -138,7 +138,7 @@ public class Recherche extends JFrame implements ActionListener
                       ResultSetTableModel rtm = new ResultSetTableModel( resultat );
                       TablePanel tablePanel = new TablePanel( rtm );
 
-                      JFrame mainFrame = new JFrame( "Affiche table " );
+                      JFrame mainFrame = new JFrame( "Affiche les infos des docteurs " );
                       mainFrame.add( tablePanel, BorderLayout.CENTER );                          
                       mainFrame.setSize( 640, 480 );
                       mainFrame.setVisible( true );

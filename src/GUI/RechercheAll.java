@@ -9,8 +9,13 @@ package GUI;
  *
  * @author F
  */
+import Connexion.Connexion;
+import java.awt.BorderLayout;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -22,6 +27,7 @@ public class RechercheAll extends JFrame implements ActionListener
 {
     JToolBar theToolbar;
     JComboBox<String> comboBox;
+    public Connection connect = Connexion.getInstance();
 
     public RechercheAll()
     {
@@ -51,31 +57,232 @@ public class RechercheAll extends JFrame implements ActionListener
             switch ((String)comboBox.getSelectedItem())
                     {
                 case "Chambre" :
-                    //AjoutChambre();
+                    AfficheChambre();
                     break;
                 case "Docteur" :
-                    //AjoutDocteur();
+                    AfficheDocteur();
                     break;
                 case "Employé" :
-                    //AjoutHospitalisation();
+                    AfficheEmploye();
                     break;
                 case "Hospitalisation" :
-                    //AjoutHospitalisation();
+                    AfficheHospitalisation();
                     break;
                 case "Infirmier" :
-                    //AjoutInfirmier();
+                    AfficheInfirmier();
                     break;
                 case "Malade" :
-                    //AjoutMalade();
+                    AfficheMalade();
                     break;
                 case "Service" :
-                    //AjoutService();
+                    AfficheService();
                     break;
                 case "Soigne" :
-                    //AjoutSoigne();
+                    AfficheSoigne();
                     break;
             }
             System.out.println(comboBox.getSelectedItem());
         }
     }
+    
+    public void AfficheChambre(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM chambre;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Chambre" );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+    
+    public void AfficheDocteur(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM docteur;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Docteur " );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+     
+    public void AfficheEmploye(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM employe;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Employe " );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+    
+    public void AfficheHospitalisation(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM hospitalisation;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Hospitalisation" );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+    
+    public void AfficheInfirmier(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM infirmier;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Infirmier" );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+    
+    public void AfficheMalade(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM malade;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Malade" );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+    
+    public void AfficheService(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM service;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Service" );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
+    
+    public void AfficheSoigne(){
+        
+        try{
+                      ResultSet resultat=this .connect
+                              .createStatement(
+                                          ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                          ResultSet.CONCUR_UPDATABLE
+                                       ).executeQuery(
+                                          "SELECT * FROM soigne;"
+                                       );
+                  if(resultat.first()){   
+                      ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                      TablePanel tablePanel = new TablePanel( rtm );
+
+                      JFrame mainFrame = new JFrame( "Affiche table Soigne" );
+                      mainFrame.add( tablePanel, BorderLayout.CENTER );                          
+                      mainFrame.setSize( 640, 480 );
+                      mainFrame.setVisible( true );
+
+                  }
+                  }catch (SQLException f) {
+                      f.printStackTrace();
+              }
+    }
 }
+

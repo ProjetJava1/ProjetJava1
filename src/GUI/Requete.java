@@ -42,7 +42,7 @@ public class Requete extends JFrame
                       ResultSetTableModel rtm = new ResultSetTableModel( resultat );
                       TablePanel tablePanel = new TablePanel( rtm );
 
-                      JFrame mainFrame = new JFrame( "Affiche table " );
+                      JFrame mainFrame = new JFrame( "Affiche les patients du docteur "+NomDoc );
                       mainFrame.add( tablePanel, BorderLayout.CENTER );                          
                       mainFrame.setSize( 640, 480 );
                       mainFrame.setVisible( true );

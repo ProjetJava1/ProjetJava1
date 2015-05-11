@@ -4,9 +4,11 @@ package GUI;
  *
  * @author F
  */
+import Connexion.Connexion;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 @SuppressWarnings("serial")
 public class Offline extends JFrame implements ActionListener
@@ -49,7 +51,27 @@ public class Offline extends JFrame implements ActionListener
             char[] thePassword2 = mdpBase.getPassword();
             password2 = new String(thePassword2);
             this.dispose();
-            //new OuvertureBaseLocale(Login,password2);
-        }
+            
+            try
+            {
+                try
+                {
+                    // tentative de connexion si les 4 attributs sont remplis
+                    new Connexion(ServeurECE, password2);
+                }
+                catch (ClassNotFoundException cnfe)
+                {
+                    System.out.println("Connexion echouee : probleme de classe");
+                    cnfe.printStackTrace();
+                }
+            }
+            catch (SQLException f)
+            {
+                System.out.println("Connexion echouee : probleme SQL");
+                f.printStackTrace();
+            }
+            
+            new Menu();
+         }
     }
 }

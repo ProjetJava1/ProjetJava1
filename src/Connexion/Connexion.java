@@ -51,7 +51,7 @@ public class Connexion {
 
         }
     }
-    Connexion(String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
+    public Connexion(String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 

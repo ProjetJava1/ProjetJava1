@@ -12,7 +12,6 @@ import java.sql.SQLException;
 @SuppressWarnings("serial")
 public class GUI2 extends JFrame implements ActionListener
 {
-    private Connexion maconnexion;
 
     String Login;
     JPasswordField mdpBase;
@@ -59,7 +58,7 @@ public class GUI2 extends JFrame implements ActionListener
                 try
                 {
                     // tentative de connexion si les 4 attributs sont remplis
-                    maconnexion = new Connexion(ServeurECE, password1, Login, password2);
+                    new Connexion(ServeurECE, password1, Login, password2);
                 }
                 catch (ClassNotFoundException cnfe)
                 {
@@ -72,7 +71,7 @@ public class GUI2 extends JFrame implements ActionListener
                 System.out.println("Connexion echouee : probleme SQL");
                 f.printStackTrace();
             }
-            new Menu(maconnexion);
+            new Menu();
         }
     }
 

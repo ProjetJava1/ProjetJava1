@@ -12,16 +12,13 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class Menu extends JFrame implements ActionListener
 {
-    private Connexion maconnex;
-
     JButton Recherche;
     JButton MaJ;
     JButton Stat;
     JButton Quitter;
 
-    public Menu(Connexion conn)
+    public Menu()
     {
-        maconnex = conn;
 
         setTitle("Menu");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +62,7 @@ public class Menu extends JFrame implements ActionListener
     {
         if (e.getActionCommand().equals("Recherche"))
         {
-            new Recherche(maconnex);
+            new Recherche();
         }
         else if (e.getActionCommand().equals("Mise à jour"))
         {

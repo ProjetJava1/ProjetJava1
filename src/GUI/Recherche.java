@@ -17,7 +17,6 @@ import java.sql.SQLException;
 @SuppressWarnings("serial")
 public class Recherche extends JFrame implements ActionListener
 {
-    private Connection maconnex;
     JButton RechDoct;
     JButton RechEmp;
     JButton RechNPS;
@@ -25,9 +24,8 @@ public class Recherche extends JFrame implements ActionListener
     JButton Retour;
     public Connection connect = Connexion.getInstance();
 
-    public Recherche(Connexion conn)
+    public Recherche()
     {
-        maconnex=Connexion.getInstance();
         setTitle("Requêtes");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

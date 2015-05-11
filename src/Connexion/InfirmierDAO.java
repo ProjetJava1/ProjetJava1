@@ -94,7 +94,7 @@ public class InfirmierDAO extends DAO<Infirmier>{
                      ).executeUpdate(
                     	"UPDATE infirmier SET code_service = '" + obj.getCode_service() + "',"+
                         " rotation = '" +obj.getRotation() + "',"+
-                        " salaire = '" +obj.getSalaire() + "',"+                     
+                        " salaire = '" +obj.getSalaire() + "'"+                     
                     	" WHERE numero = " + obj.getNumero()                   );
 			
 			obj = this.find(obj.getNumero());

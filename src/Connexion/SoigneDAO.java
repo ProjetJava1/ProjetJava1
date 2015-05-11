@@ -70,7 +70,7 @@ public class SoigneDAO extends DAO<Soigne>{
                         ResultSet.CONCUR_UPDATABLE
                      ).executeUpdate(
                     	"UPDATE soigne SET no_docteur = '" + obj.getNo_docteur() + "',"+
-                        " no_malade = '" +obj.getNo_malade() + "',"+
+                        " no_malade = '" +obj.getNo_malade() + "'"+
                     	" WHERE id_soigne = " + obj.getId_soigne()                   );
 			
 			obj = this.find(obj.getId_soigne());

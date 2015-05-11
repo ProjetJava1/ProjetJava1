@@ -88,7 +88,7 @@ public class DocteurDAO extends DAO<Docteur>{
                     	ResultSet.TYPE_SCROLL_INSENSITIVE, 
                         ResultSet.CONCUR_UPDATABLE
                      ).executeUpdate(
-                    	"UPDATE docteur SET specialite = '" + obj.getSpécialité()+ "',"+                   
+                    	"UPDATE docteur SET specialite = '" + obj.getSpécialité()+ "'"+                   
                     	" WHERE numero = " + obj.getNumero()                   );
 			obj = this.find(obj.getNumero());
 	    } catch (SQLException e) {

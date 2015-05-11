@@ -86,7 +86,7 @@ public class HospitalisationDAO extends DAO<Hospitalisation>{
                     	"UPDATE hospitalisation SET no_malade = '" + obj.getNo_malade() + "',"+
                         " code_service = '" +obj.getCode_service() + "',"+
                         " no_chambre = '" +obj.getNo_chambre() + "',"+
-                        " lit = '" +obj.getLit() + "',"+
+                        " lit = '" +obj.getLit() + "'"+
                     	" WHERE id_hospitalisation = " + obj.getId_hospitalisation()                   );
 			
 			obj = this.find(obj.getId_hospitalisation());

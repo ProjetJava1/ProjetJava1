@@ -20,7 +20,7 @@ public class InfirmierDAO extends DAO<Infirmier>{
                         String adresse="La River";
                         String tel="010";
 			DAO<Employe> employeDAO = new EmployeDAO();
-                        Employe emp = new Employe(0,nom,prenom,adresse,tel );
+                        Employe emp = new Employe(nom,prenom,adresse,tel );
                         employeDAO.create(emp);
                         try{
                             ResultSet resultat=this .connect

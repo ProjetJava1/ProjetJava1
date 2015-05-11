@@ -74,12 +74,15 @@ public class Recherche extends JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        
     if (e.getActionCommand().equals("Patients affiliés à un docteur")) {
             System.out.println("Patients affiliés à un docteur");
             new Requete();
           }
           else if (e.getActionCommand().equals("Afficher tous les employés")) {
             System.out.println("Afficher tous les employés");
+            
 //REQUETE A FAIRE
           }
           else if (e.getActionCommand().equals("Afficher des infos des docteurs")) {

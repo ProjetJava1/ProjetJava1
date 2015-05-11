@@ -73,6 +73,7 @@ public class GUI extends JFrame implements ActionListener
         new OnOff();
         //new Menu("Menu");
         //new SwingApp("Page de connexion");
+        //new Recherche();
     }
 
 }

@@ -20,14 +20,13 @@ public class GUI extends JFrame implements ActionListener
 {
     String ServeurECE;
     JPasswordField mdpECE;
-    String Login;
-    JPasswordField mdpBase;
     String password1;
-    String password2;
 
+    
     public GUI(int on_off)
     {
         JOptionPane jop = new JOptionPane();
+
         ServeurECE = jop.showInputDialog(null, "Entrer le nom du serveur", "Serveur", JOptionPane.QUESTION_MESSAGE);
         
         if ((ServeurECE!=null) && (!ServeurECE.isEmpty()))
@@ -46,61 +45,31 @@ public class GUI extends JFrame implements ActionListener
             this.setVisible(true);
         }
         else System.exit(0);
-
+        
 
     }
+
+
     
     
-            public void test()
-        {
-        JOptionPane jop = new JOptionPane();
-
-            Login = jop.showInputDialog(null, "Entrer le login de la base", "Login", JOptionPane.QUESTION_MESSAGE);
-        // Si non vide ni "annuler"
-        if ((Login!=null)&&(!Login.isEmpty()))
-        {           
-            JPanel panel2 = new JPanel();
-            panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
-            panel2.setBorder(new TitledBorder("Entrer votre mot de passe"));
-            
-            mdpBase = new JPasswordField(20);
-            mdpBase.addActionListener(this);
-
-            panel2.add(mdpBase);
-            this.getContentPane().add(panel2);
-
-            this.pack();
-            this.setVisible(true);
-        }
-        else System.exit(0);
-        }
-            
     @Override
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource().equals(mdpECE))
         {
             char[] thePassword1 = mdpECE.getPassword();
-            password1 = new String(thePassword1);
+            String password1 = new String(thePassword1);
             System.out.println("Password ECE is " + password1);
             this.dispose();
-                        test();
-
+            new GUI2(ServeurECE,password1);
         }
-        else if (e.getSource().equals(mdpBase))
-        {
-            char[] thePassword2 = mdpBase.getPassword();
-            password2 = new String(thePassword2);
-            System.out.println("Password Base is " + password2);
-            this.dispose();
-            //new OuvertureBase(ServeurECE,password1, Login,password2);
-        }
+        
     }
 
     public static void main (String argv[])
     {
         //new Menu("a","b","c");
-        new OnOff(); 
+        new OnOff();
         //new Menu("Menu");
         //new SwingApp("Page de connexion");
     }

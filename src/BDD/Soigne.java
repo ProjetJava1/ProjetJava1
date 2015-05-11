@@ -18,6 +18,11 @@ public class Soigne {
     this.No_docteur = No_docteur;
     this.No_malade = No_malade;
     }
+    public Soigne(int Id_soigne, int No_docteur, int No_malade) {
+    this.Id_soigne=Id_soigne;
+    this.No_docteur = No_docteur;
+    this.No_malade = No_malade;
+    }
     
     public Soigne(){};
      

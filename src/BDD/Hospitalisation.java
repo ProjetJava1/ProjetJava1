@@ -22,6 +22,13 @@ public class Hospitalisation {
     this.No_chambre = No_chambre;
     this.Lit = Lit;    
 }
+    public Hospitalisation(int Id_hospitalisation, int No_malade,String Code_service,int No_chambre,int Lit) {
+    this.Id_hospitalisation=Id_hospitalisation;
+    this.No_malade = No_malade;
+    this.Code_service = Code_service;
+    this.No_chambre = No_chambre;
+    this.Lit = Lit;    
+}
     
     public Hospitalisation(){};
      

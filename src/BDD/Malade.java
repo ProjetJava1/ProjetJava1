@@ -25,6 +25,13 @@ public class Malade {
     this.Tel = Tel;
     this.Mutuelle = Mutuelle;
 }
+    public Malade (int Numero, String Nom, String Prénom, String Adresse, String Tel, String Mutuelle) {
+    this.Numero=Numero;
+    this.Nom = Nom;
+    this.Prénom = Prénom;
+    this.Tel = Tel;
+    this.Mutuelle = Mutuelle;
+}
     
     public Malade(){};
      

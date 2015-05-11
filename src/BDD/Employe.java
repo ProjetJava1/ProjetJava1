@@ -23,6 +23,13 @@ public class Employe {
     this.Adresse = Adresse;
     this.Tel = Tel;
 }
+    public Employe ( int Numero, String Nom, String Prénom, String Adresse, String Tel) {
+    this.Numero=Numero;
+    this.Nom = Nom;
+    this.Prénom = Prénom;
+    this.Adresse = Adresse;
+    this.Tel = Tel;
+}
     
     public Employe(){};
      

@@ -22,6 +22,13 @@ public class Service {
     this.Batiment = Batiment;
     this.Directeur = Directeur;    
 }
+    public Service(int Id_service,  String Code_service,String Nom,String Batiment,int Directeur) {
+    this.Id_service=Id_service;
+    this.Code_service = Code_service;
+    this.Nom = Nom;
+    this.Batiment = Batiment;
+    this.Directeur = Directeur;    
+}
     
     public Service(){};
      

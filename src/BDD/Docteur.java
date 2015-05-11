@@ -17,6 +17,10 @@ public class Docteur {
     public Docteur(String Spécialité) {
     this.Spécialité = Spécialité;
     }
+    public Docteur(int Numero, String Spécialité) {
+    this.Numero=Numero;
+    this.Spécialité = Spécialité;
+    }
     
     public Docteur(){};
      

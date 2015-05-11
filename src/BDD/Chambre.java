@@ -22,6 +22,14 @@ public class Chambre {
     this.Surveillant = Surveillant;
     this.Nb_lits = Nb_lits;    
 }
+    public Chambre(int Id_Chambre, String Code_service,int No_chambre,int Surveillant,int Nb_lits) {
+    this.Id_chambre = Id_Chambre;
+    this.Code_service = Code_service;
+    this.No_chambre = No_chambre;
+    this.Surveillant = Surveillant;
+    this.Nb_lits = Nb_lits;    
+}
+    
     
     public Chambre(){};
      

@@ -21,6 +21,12 @@ public class Infirmier {
     this.Rotation = Rotation;
     this.Salaire = Salaire;    
 }
+    public Infirmier(int Numero, String Code_service,String Rotation,float Salaire) {
+    this.Numero=Numero;
+    this.Code_service = Code_service;
+    this.Rotation = Rotation;
+    this.Salaire = Salaire;    
+}
     
     public Infirmier(){};
      

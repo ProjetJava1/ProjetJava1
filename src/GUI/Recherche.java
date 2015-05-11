@@ -9,6 +9,86 @@ package GUI;
  *
  * @author F
  */
-public class Recherche {
-    
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.Container;
+import java.awt.Rectangle;
+
+@SuppressWarnings("serial")
+public class Recherche extends JFrame implements ActionListener
+{	
+        JButton RechDoct;
+        JButton RechEmp;
+        JButton RechNPS;
+        JButton Quitter;
+
+        public Recherche()
+        {
+            setTitle("Requêtes");
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+            this.RechDoct = new JButton("Patients affiliés à un docteur");
+            this.RechEmp = new JButton("Afficher tous les employés");
+            this.RechNPS = new JButton("Afficher des infos des docteurs");
+            this.Quitter = new JButton("Quitter");
+
+            Container panneau=this.getContentPane();
+            panneau.setLayout(null);
+            
+            RechDoct.setBounds(new Rectangle(15,20,250,40));
+            RechDoct.setText("Patients affiliés à un docteur");
+
+            RechEmp.setBounds(new Rectangle(15,110,250,40));
+            RechEmp.setText("Afficher tous les employés");
+            
+            RechNPS.setBounds(new Rectangle(15,200,250,40));
+            RechNPS.setText("Afficher des infos des docteurs");
+            
+            Quitter.setBounds(new Rectangle(15,290,250,40));
+            Quitter.setText("Quitter");
+            
+            
+            this.RechDoct.addActionListener(this);
+            this.RechEmp.addActionListener(this);
+            this.RechNPS.addActionListener(this);
+            this.Quitter.addActionListener(this);
+
+            panneau.add(RechDoct);
+            panneau.add(RechEmp);
+            panneau.add(RechNPS);
+            panneau.add(Quitter);
+
+            setSize(300,400);
+            setVisible(true);
+
+        }
+        
+        
+    /*
+        public static void main (String argv[])
+        {
+            new Menu("Page de connexion");
+        }
+    */
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    if (e.getActionCommand().equals("Patients affiliés à un docteur")) {
+            System.out.println("Patients affiliés à un docteur");
+            new Requete();
+          }
+          else if (e.getActionCommand().equals("Afficher tous les employés")) {
+            System.out.println("Afficher tous les employés");
+//REQUETE A FAIRE
+          }
+          else if (e.getActionCommand().equals("Afficher des infos des docteurs")) {
+            System.out.println("Afficher des infos des docteurs");
+            //REQUETE A FAIRE
+          }
+          else if (e.getActionCommand().equals("Quitter")) {
+            System.out.println("Quitter");
+            System.exit(0); // Quitte le programme
+          }
+    }
 }

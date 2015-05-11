@@ -250,9 +250,11 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             listeRequetesMaj.select(0);
         }
         
-           DAO<Soigne> soigneDAO = new SoigneDAO();
-           Soigne soi = new Soigne(204,192);
-           soigneDAO.create(soi);
+          /* DAO<Hospitalisation> soigneDAO = new HospitalisationDAO();
+           Hospitalisation hos = new Hospitalisation(191, "CAR", 106, 2);
+           soigneDAO.create(hos);*/
+            DAO<Employe> employeDAO = new EmployeDAO();
+            employeDAO.delete(34);
     }
         
     

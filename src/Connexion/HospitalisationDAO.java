@@ -13,9 +13,19 @@ import java.sql.*;
 public class HospitalisationDAO extends DAO<Hospitalisation>{
     @Override
     public Hospitalisation create(Hospitalisation obj) {
-		try {
+                    try{
+                            ResultSet resultat=this .connect
+                                    .createStatement(
+                                            	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                                ResultSet.CONCUR_UPDATABLE
+                                             ).executeQuery(
+                                                "SELECT * FROM hospitalisation WHERE code_service = '"+obj.getCode_service()+"'AND no_chambre='"+obj.getNo_chambre()+"'AND lit='"+obj.getLit()+"'"
+                                             );
+                        if(resultat.first()){
+                            System.out.println("Ce lit est déjà occupé");
+                        }
 			 
-			
+                        else{
     			PreparedStatement prepare = this	.connect
                                                     .prepareStatement(
                                                     	"INSERT INTO hospitalisation ( no_malade, code_service, no_chambre, lit) VALUES(?, ?, ?, ?)"
@@ -28,7 +38,7 @@ public class HospitalisationDAO extends DAO<Hospitalisation>{
 				prepare.executeUpdate();
 				obj = this.find(obj.getId_hospitalisation());
 				
-			//}
+                        }
 	    } catch (SQLException e) {
 	            e.printStackTrace();
 	    }

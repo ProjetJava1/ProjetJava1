@@ -100,6 +100,23 @@ public class EmployeDAO extends DAO<Employe>{
                              ResultSet.CONCUR_UPDATABLE
                         ).executeUpdate(
                              "DELETE FROM employe WHERE Numero = " + id
+                             
+                        );
+                this    .connect
+                    	.createStatement(
+                             ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                             ResultSet.CONCUR_UPDATABLE
+                        ).executeUpdate(
+                             "DELETE FROM infirmier WHERE Numero = " + id
+                             
+                        );
+                this    .connect
+                    	.createStatement(
+                             ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                             ResultSet.CONCUR_UPDATABLE
+                        ).executeUpdate(
+                             "DELETE FROM docteur WHERE Numero = " + id
+                             
                         );
 			
 	    } catch (SQLException e) {

@@ -109,10 +109,6 @@ public class Supp extends JFrame implements ActionListener
         int test=0;
         String strId;
         int Id;
-        int chx=0;
-        String Nom;
-        String Prenom;
-
 
         JOptionPane jop = new JOptionPane();
         while (test==0)
@@ -170,9 +166,6 @@ public class Supp extends JFrame implements ActionListener
         int test=0;
         String strId;
         int Id;
-        int chx=0;
-        String Nom;
-        String Prenom;
 
         JOptionPane jop = new JOptionPane();
         while (test==0)
@@ -200,9 +193,6 @@ public class Supp extends JFrame implements ActionListener
         int test=0;
         String strId;
         int Id;
-        int chx;
-        String Nom;
-        String Prenom;
 
         JOptionPane jop = new JOptionPane();
         while (test==0)
@@ -301,6 +291,5 @@ public class Supp extends JFrame implements ActionListener
         } // Fin du while
         // SupprSoigneFromBase(IdDoc,IdMal);
     }
-
 
 }

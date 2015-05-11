@@ -9,6 +9,8 @@ package GUI;
  *
  * @author F
  */
+import Connexion.ChartDocteur;
+import Connexion.Charts;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -75,11 +77,11 @@ public class Statistiques extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("Nombre d'hospitalisations par service")) {
             System.out.println("Nombre d'hospitalisations par service");
-            // GRAPHE 1
+            new Charts();
           }
           else if (e.getActionCommand().equals("Nombre de docteurs par spécialisation")) {
             System.out.println("Nombre de docteurs par spécialisation");
-//GRAPHE 2
+            new ChartDocteur();
           }
           else if (e.getActionCommand().equals("Afficher des infos des docteurs")) {
             System.out.println("Afficher des infos des docteurs");

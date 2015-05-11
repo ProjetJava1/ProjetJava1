@@ -25,14 +25,16 @@ import java.sql.ResultSetMetaData;
 @SuppressWarnings("serial")
 public class Recherche extends JFrame implements ActionListener
 {	
+        private Connection maconnex; 
         JButton RechDoct;
         JButton RechEmp;
         JButton RechNPS;
         JButton Quitter;
         public Connection connect = Connexion.getInstance();
 
-        public Recherche()
+        public Recherche(Connexion conn)
         {
+            maconnex=Connexion.getInstance(); 
             setTitle("Requêtes");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             
@@ -82,8 +84,7 @@ public class Recherche extends JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        
+                    
     if (e.getActionCommand().equals("Patients affiliés à un docteur")) {
             System.out.println("Patients affiliés à un docteur");
             new Requete();
@@ -100,17 +101,17 @@ public class Recherche extends JFrame implements ActionListener
                                              ).executeQuery(
                                                 "SELECT nom, prenom FROM employe ORDER BY nom;"
                                              );
-                        if(resultat.first())
-                            
-                                   ResultSetTableModel rtm = new ResultSetTableModel( rs );
-        
-                                    TablePanel tablePanel = new TablePanel( rtm );
+                        if(resultat.first()){   
+                            ResultSetTableModel rtm = new ResultSetTableModel( resultat );
+                            TablePanel tablePanel = new TablePanel( rtm );
 
-                                   JFrame mainFrame = new JFrame( "Affiche table " );
-                                  mainFrame.add( tablePanel, BorderLayout.CENTER );
-                                  mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
-                                   mainFrame.setSize( 640, 480 );
-                                  mainFrame.setVisible( true );
+                            JFrame mainFrame = new JFrame( "Affiche table " );
+                            mainFrame.add( tablePanel, BorderLayout.CENTER );
+                            mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+                            mainFrame.setSize( 640, 480 );
+                            mainFrame.setVisible( true );
+
+                        }
                         }catch (SQLException f) {
 		            f.printStackTrace();
 		    }

@@ -121,7 +121,8 @@ public class DocteurDAO extends DAO<Docteur>{
                              ResultSet.TYPE_SCROLL_INSENSITIVE, 
                              ResultSet.CONCUR_UPDATABLE
                         ).executeUpdate(
-                             "DELETE FROM docteur WHERE numero = " + id
+                             "DELETE FROM docteur WHERE numero = " + id+
+                             "DELETE FROM employe WHERE numero = " + id
                         );
 			
 	    } catch (SQLException e) {

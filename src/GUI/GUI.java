@@ -28,7 +28,6 @@ public class GUI extends JFrame implements ActionListener
     public GUI(int on_off)
     {
         JOptionPane jop = new JOptionPane();
-        JOptionPane jop2 = new JOptionPane();
         ServeurECE = jop.showInputDialog(null, "Entrer le nom du serveur", "Serveur", JOptionPane.QUESTION_MESSAGE);
         
         if ((ServeurECE!=null) && (!ServeurECE.isEmpty()))
@@ -47,9 +46,16 @@ public class GUI extends JFrame implements ActionListener
             this.setVisible(true);
         }
         else System.exit(0);
-                    jop2.showMessageDialog(null, "Your IP address is " + password1, "IP address", JOptionPane.INFORMATION_MESSAGE);
 
-        Login = jop.showInputDialog(null, "Entrer le login de la base", "Login", JOptionPane.QUESTION_MESSAGE);
+
+    }
+    
+    
+            public void test()
+        {
+        JOptionPane jop = new JOptionPane();
+
+            Login = jop.showInputDialog(null, "Entrer le login de la base", "Login", JOptionPane.QUESTION_MESSAGE);
         // Si non vide ni "annuler"
         if ((Login!=null)&&(!Login.isEmpty()))
         {           
@@ -67,9 +73,8 @@ public class GUI extends JFrame implements ActionListener
             this.setVisible(true);
         }
         else System.exit(0);
-
-    }
-    
+        }
+            
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -79,6 +84,8 @@ public class GUI extends JFrame implements ActionListener
             password1 = new String(thePassword1);
             System.out.println("Password ECE is " + password1);
             this.dispose();
+                        test();
+
         }
         else if (e.getSource().equals(mdpBase))
         {
@@ -93,7 +100,7 @@ public class GUI extends JFrame implements ActionListener
     public static void main (String argv[])
     {
         //new Menu("a","b","c");
-        new ChoixSuppression();
+        new OnOff(); 
         //new Menu("Menu");
         //new SwingApp("Page de connexion");
     }

@@ -469,7 +469,7 @@ public class Modifier extends JFrame implements ActionListener
         }
                 
         while (test==2) {
-        strNumDirecteur = jop.showInputDialog(null, "Entrer nom de son directeur", "Directeur", JOptionPane.QUESTION_MESSAGE);
+        strNumDirecteur = jop.showInputDialog(null, "Entrer numero de son directeur", "Directeur", JOptionPane.QUESTION_MESSAGE);
 
         if ((strNumDirecteur!=null) && (!strNumDirecteur.isEmpty())) {
             try {

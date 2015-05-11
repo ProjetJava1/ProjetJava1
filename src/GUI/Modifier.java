@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import BDD.*;
+import Connexion.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -82,15 +84,15 @@ public class Modifier extends JFrame implements ActionListener
     public void ModifChambre() 
     {
         int test=-1;
-        String Code_Service;
+        String Code_Service="";
         String strNumSurv;
         String strNbLits;
         String strNumChambre;
-        int NumSurv;
-        int NbLits;
-        int NumChambre;
+        int NumSurv=0;
+        int NbLits=0;
+        int NumChambre=0;
         String strNumMod;
-        int NumMod;
+        int NumMod=0;
         
         JOptionPane jop = new JOptionPane();
 
@@ -114,7 +116,7 @@ public class Modifier extends JFrame implements ActionListener
         }
         
         while (test==1) {
-        strNumChambre = jop.showInputDialog(null, "Entrer le nombre de lits", "Nombre de lits", JOptionPane.QUESTION_MESSAGE);
+        strNumChambre = jop.showInputDialog(null, "Entrer le numero de chambre", "Numero de chambre", JOptionPane.QUESTION_MESSAGE);
 
         if ((strNumChambre!=null) && (!strNumChambre.isEmpty())) {
             try {
@@ -155,6 +157,9 @@ public class Modifier extends JFrame implements ActionListener
         }
         } // Fin du while
         
+        Chambre ch=new Chambre(NumMod,Code_Service,NumChambre,NumSurv,NbLits);
+        DAO<Chambre> chambreDAO = new ChambreDAO();
+        chambreDAO.update(ch);
         // ModifChambreToBase(NumMod,Code_Service,NumChambre,NumSurv,NbLits);
 
     }
@@ -162,9 +167,9 @@ public class Modifier extends JFrame implements ActionListener
     public void ModifDocteur() 
     {
         int test=-1;
-        String Specialite;
+        String Specialite="";
         String strNumMod;
-        int NumMod;
+        int NumMod=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -190,6 +195,12 @@ public class Modifier extends JFrame implements ActionListener
         ModifEmploye();
 
         // ModifDocteurToBase(NumMod,Specialite,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
+        Employe emp=new Employe(NumMod,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
+        DAO<Employe> employeDAO = new EmployeDAO();
+        employeDAO.update(emp);
+        Docteur dr=new Docteur(NumMod,Specialite);
+        DAO<Docteur> docteurDAO = new DocteurDAO();
+        docteurDAO.update(dr);
     }
     
     public void ModifEmploye() 
@@ -223,15 +234,15 @@ public class Modifier extends JFrame implements ActionListener
     public void ModifHospitalisation() 
     {
         int test=-1;
-        String Code_Service;
+        String Code_Service="";
         String strNumChambre;
         String strNumMalade;
         String strNumLit;
-        int NumChambre;
-        int NumMalade;
-        int NumLit;
+        int NumChambre=0;
+        int NumMalade=0;
+        int NumLit=0;
         String strNumMod;
-        int NumMod;
+        int NumMod=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -297,17 +308,20 @@ public class Modifier extends JFrame implements ActionListener
         } // Fin du while
         
         // ModifHospitalisationToBase(NumMod,NumMalade,Code_Service,NumChambre,NumLit);
+        Hospitalisation hos=new Hospitalisation(NumMod,NumMalade,Code_Service,NumChambre,NumLit);
+        DAO<Hospitalisation> hospitalisationDAO = new HospitalisationDAO();
+        hospitalisationDAO.update(hos);
     }
 
     public void ModifInfirmier() 
     {
         int test=-1;
-        String Code_Service;
-        String Rotation;
+        String Code_Service="";
+        String Rotation="";
         String strSalaire;
-        float Salaire;
+        float Salaire=0;
         String strNumMod;
-        int NumMod;
+        int NumMod=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -350,6 +364,12 @@ public class Modifier extends JFrame implements ActionListener
         } // Fin du while
         
         ModifEmploye();
+        Employe emp=new Employe(NumMod,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
+        DAO<Employe> employeDAO = new EmployeDAO();
+        employeDAO.update(emp);
+        Infirmier inf=new Infirmier(NumMod,Code_Service,Rotation,Salaire);
+        DAO<Infirmier> infirmierDAO = new InfirmierDAO();
+        infirmierDAO.update(inf);
         
         // ModifInfirmierToBase(NumMod,Code_Service,Rotation,Salaire,NomEmp,PrenomEmp,AdresseEmp,TelephoneEmp);
     }
@@ -363,7 +383,7 @@ public class Modifier extends JFrame implements ActionListener
         String Telephone=null;
         String Mutuelle=null;
         String strNumMod;
-        int NumMod;
+        int NumMod=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -406,17 +426,19 @@ public class Modifier extends JFrame implements ActionListener
         if ((Mutuelle!=null) && (!Mutuelle.isEmpty())) test=5;
         }
         // ModMaladeToBase(NumMod,Nom,Prenom,Adresse,Telephone,Mutuelle);
+        Malade mal=new Malade(NumMod,Nom,Prenom,Adresse,Telephone,Mutuelle);
+        DAO<Malade> maladeDAO = new MaladeDAO();
+        maladeDAO.update(mal);
     }
     
     public void ModifService() 
     {
         int test=-1;
-        String Code;
-        String Nom;
-        char Batiment;
-        String strBatiment;
-        String strNumDirecteur;
-        int NumDirecteur;
+        String Code=null;
+        String Nom=null;
+        String strBatiment=null;
+        String strNumDirecteur=null;
+        int NumDirecteur=0;
         String strNumMod;
         int NumMod;
         
@@ -464,13 +486,14 @@ public class Modifier extends JFrame implements ActionListener
         strBatiment = jop.showInputDialog(null, "Entrer nom du batiment", "Batiment", JOptionPane.QUESTION_MESSAGE);
 
         if ((strBatiment!=null) && (!strBatiment.isEmpty()) && (strBatiment.length()==1)) {
-
-                Batiment = strBatiment.charAt(0);
                 test=4;
             }
         }// Fin du while
         
         // AddServiceToBase(Code,Nom,Batiment,NumDirecteur);
+        Service ser=new Service(Code,Nom,strBatiment,NumDirecteur);
+        DAO<Service> serviceDAO = new ServiceDAO();
+        serviceDAO.update(ser);
     } 
              
     public void ModifSoigne() 
@@ -478,10 +501,10 @@ public class Modifier extends JFrame implements ActionListener
         int test=-1;
         String strNumDocteur;
         String strNumMalade;
-        int NumDocteur;
-        int NumMalade;
+        int NumDocteur=0;
+        int NumMalade=0;
         String strNumMod;
-        int NumMod;
+        int NumMod=0;
         
         JOptionPane jop = new JOptionPane();
         
@@ -529,5 +552,8 @@ public class Modifier extends JFrame implements ActionListener
              
         
         //AddSoigneToBase(NumDocteur,NumMalade);
+        Soigne soi=new Soigne(NumMod, NumDocteur, NumMalade);
+        DAO<Soigne> soigneDAO = new SoigneDAO();
+        soigneDAO.update(soi);
     }
 }

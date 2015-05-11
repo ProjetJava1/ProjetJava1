@@ -49,7 +49,7 @@ public class SoigneDAO extends DAO<Soigne>{
             if(result.first())
             		soi = new Soigne(
                                         result.getInt("no_docteur"),
-                                        result.getInt("no_soigne")
+                                        result.getInt("no_malade")
                                     );
 //            
 		    } catch (SQLException e) {

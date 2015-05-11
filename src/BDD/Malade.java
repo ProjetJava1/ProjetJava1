@@ -22,6 +22,7 @@ public class Malade {
     public Malade (String Nom, String Prénom, String Adresse, String Tel, String Mutuelle) {
     this.Nom = Nom;
     this.Prénom = Prénom;
+    this.Adresse=Adresse;
     this.Tel = Tel;
     this.Mutuelle = Mutuelle;
 }
@@ -29,6 +30,7 @@ public class Malade {
     this.Numero=Numero;
     this.Nom = Nom;
     this.Prénom = Prénom;
+    this.Adresse=Adresse;
     this.Tel = Tel;
     this.Mutuelle = Mutuelle;
 }

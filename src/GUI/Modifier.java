@@ -413,12 +413,12 @@ public class Modifier extends JFrame implements ActionListener
                 
         while (test==2) {
         Adresse = jop.showInputDialog(null, "Entrer son adresse", "Adresse", JOptionPane.QUESTION_MESSAGE);
-        if ((Adresse!=null) && (!Adresse.isEmpty())) test=4;
+        if ((Adresse!=null) && (!Adresse.isEmpty())) test=3;
         }
                         
         while (test==3) {
         Telephone = jop.showInputDialog(null, "Entrer son numéro de téléphone", "Telephone", JOptionPane.QUESTION_MESSAGE);
-        if ((Telephone!=null) && (!Telephone.isEmpty())) test=3;
+        if ((Telephone!=null) && (!Telephone.isEmpty())) test=4;
         }
                                 
         while (test==4) {

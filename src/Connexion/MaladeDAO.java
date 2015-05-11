@@ -48,7 +48,7 @@ public class MaladeDAO extends DAO<Malade>{
                                             	ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                                 ResultSet.CONCUR_UPDATABLE
                                              ).executeQuery(
-                                                "SELECT * FROM employe WHERE numero = " + id
+                                                "SELECT * FROM malade WHERE numero = " + id
                                              );
             if(result.first())
             		mal = new Malade(
@@ -79,8 +79,8 @@ public class MaladeDAO extends DAO<Malade>{
                     	"UPDATE malade SET nom = '" + obj.getNom() + "',"+
                         " prenom = '" +obj.getPrénom() + "',"+
                         " adresse = '" +obj.getAdresse() + "',"+
-                        " tel ='" +obj.getTel() + "'"+
-                        " mutuelle ='" +obj.getTel() + "'"+
+                        " tel ='" +obj.getTel() + "',"+
+                        " mutuelle ='" +obj.getMutuelle()+ "'"+
                     	" WHERE Numero = " + obj.getNumero()                   );
 			
 			obj = this.find(obj.getNumero());

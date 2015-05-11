@@ -9,6 +9,7 @@ package GUI;
  *
  * @author F
  */
+import Connexion.Connexion;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -21,7 +22,7 @@ public class Menu extends JFrame implements ActionListener
         JButton Stat;
         JButton Quitter;
 
-        public Menu()
+        public Menu(Connexion conn)
         {
             setTitle("Menu");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

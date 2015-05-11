@@ -163,7 +163,7 @@ public class Ajout extends JFrame implements ActionListener
         }
         } // Fin du while
         
-        // AddChambreToBase(Code_Service,NumChambre,NumSurv,NbLits);
+         //AddChambreToBase(Code_Service,NumChambre,NumSurv,NbLits);
 
     }
     

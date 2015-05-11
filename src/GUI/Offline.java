@@ -16,7 +16,6 @@ public class Offline extends JFrame implements ActionListener
     String Login;
     JPasswordField mdpBase;
     String password2;
-    String ServeurECE;
     String password1;
     
     public Offline()
@@ -57,7 +56,7 @@ public class Offline extends JFrame implements ActionListener
                 try
                 {
                     // tentative de connexion si les 4 attributs sont remplis
-                    new Connexion(ServeurECE, password2);
+                    new Connexion(Login, password2);
                 }
                 catch (ClassNotFoundException cnfe)
                 {

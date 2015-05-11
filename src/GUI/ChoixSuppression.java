@@ -19,58 +19,59 @@ import java.awt.event.*;
 public class ChoixSuppression extends JFrame implements ActionListener
 {
    
-        JButton On;
-        JButton Off;
-        int on_off=0;
+        JButton Iden;
+        JButton NP;
+        int chx=0;
+        
         
         public ChoixSuppression()
         {
         setTitle("Choix du type de suppression");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             
-            this.On = new JButton("Suppression par identifiant");
-            this.Off = new JButton("Suppression par nom et prénom");
+            this.Iden = new JButton("Suppression par identifiant");
+            this.NP = new JButton("Suppression par nom et prénom");
 
             Container panneau=this.getContentPane();
             panneau.setLayout(null);
             
-            On.setBounds(new Rectangle(25,30,225,40));
-            On.setText("Suppression par identifiant");
+            Iden.setBounds(new Rectangle(25,30,225,40));
+            Iden.setText("Suppression par identifiant");
 
-            Off.setBounds(new Rectangle(25,100,225,40));
-            Off.setText("Suppression par nom et prénom");
+            NP.setBounds(new Rectangle(25,100,225,40));
+            NP.setText("Suppression par nom et prénom");
             
-            this.On.addActionListener(this);
-            this.Off.addActionListener(this);
+            this.Iden.addActionListener(this);
+            this.NP.addActionListener(this);
 
-            panneau.add(On);
-            panneau.add(Off);
+            panneau.add(Iden);
+            panneau.add(NP);
 
             setSize(300,200);
             setVisible(true);
     }
         
+        public int Result()
+                {
+                    return chx;
+                }
+        
         @Override
     public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("Suppression par identifiant")) {
             System.out.println("Suppression par identifiant");
-            on_off=1;           
+            chx=1;           
             this.dispose(); // Ferme la fenêtre
 
-            new GUI(on_off);
+           Result();
           }
           else if (e.getActionCommand().equals("Suppression par nom et prénom")) {
             System.out.println("Suppression par nom et prénom");
-            on_off=2;
+            chx=2;
             this.dispose(); // Ferme la fenêtre
-            new GUI(on_off);
-    }
+            Result();
+          }
         
         
 }
 }
-    
-    
-
-
-

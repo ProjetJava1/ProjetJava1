@@ -32,29 +32,13 @@ public class Supp extends JFrame implements ActionListener
         theToolbar.setFloatable(true);
         JLabel theLabel = new JLabel("Choisissez la table où faire la suppression ");
         theToolbar.add(theLabel);
-        String[] items = {"Chambre", "Docteur", "Employé", "Hospitalisation", "Infirmier","Malade","Service","Soigne"};
+        String[] items = {"Chambre", "Docteur", "Hospitalisation", "Infirmier","Malade","Service","Soigne"};
         comboBox = new JComboBox<String>(items);
         comboBox.addActionListener(this);
         theToolbar.add(comboBox);
         this.getContentPane().add(theToolbar);
         this.pack();
         this.setVisible(true);
-    }
-    
-    public void SuppInfo(String Service)
-    {
-        JOptionPane jop = new JOptionPane();
-        JOptionPane jop2 = new JOptionPane();
-        strCode = jop.showInputDialog(null, "Entrer le code du service à supprimer", "Code", JOptionPane.QUESTION_MESSAGE);
-        
-// Si non vide ni "annuler"
-        if ((strCode!=null) && (!strCode.isEmpty()))
-        {
-
-           // SuppFromBase(Service,Code);
-            System.out.println(Service);
-        }
-            
     }
     
     @Override
@@ -69,9 +53,6 @@ public class Supp extends JFrame implements ActionListener
                     break;
                 case "Docteur" :
                     SupprDocteur();
-                    break;
-                case "Employé" :
-                    SupprEmploye();
                     break;
                 case "Hospitalisation" :
                     SupprHospitalisation();
@@ -91,7 +72,6 @@ public class Supp extends JFrame implements ActionListener
             }
             System.out.println(comboBox.getSelectedItem());
             this.dispose();
-            //AjoutInfo((String)comboBox.getSelectedItem());
         }
     }
     
@@ -111,7 +91,7 @@ public class Supp extends JFrame implements ActionListener
         if ((strId!=null) && (!strId.isEmpty())) {
             try {
                 Id = Integer.parseInt(strId);
-                test=2;
+                test=1;
             }
             catch (NumberFormatException e){ 
                 System.out.println("Erreur : Veuillez entrer un nombre uniquement");
@@ -122,5 +102,247 @@ public class Supp extends JFrame implements ActionListener
         // SupprChambreFromBase(Id);
     }
     
+    public void SupprDocteur()
+    {
+        int test=0;
+        String strId;
+        int Id;
+        int chx;
+        String Nom;
+        String Prenom;
+        
+        ChoixSuppression ChxSup=new ChoixSuppression();
+        chx=ChxSup.Result();
+        
+        if (chx==1)
+        {
+           JOptionPane jop = new JOptionPane();
+        while (test==0) {
+        strId = jop.showInputDialog(null, "Entrer l'identifiant du docteur à supprimer", "Identifiant", JOptionPane.QUESTION_MESSAGE);
 
+        if ((strId!=null) && (!strId.isEmpty())) {
+            try {
+                Id = Integer.parseInt(strId);
+                test=1;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+               }
+             }
+            } // Fin du while
+        //SupprDocteurFromBaseId(Id);
+        }
+        
+        else if (chx==2)
+        {
+            JOptionPane jop = new JOptionPane();
+            while (test==0) {
+            Nom = jop.showInputDialog(null, "Entrer son nom", "Nom", JOptionPane.QUESTION_MESSAGE);
+            if ((Nom!=null) && (!Nom.isEmpty())) test=1;
+            
+            while (test==1) {
+            Prenom = jop.showInputDialog(null, "Entrer son prénom", "Prénom", JOptionPane.QUESTION_MESSAGE);
+            if ((Prenom!=null) && (!Prenom.isEmpty())) test=2;
+            
+            //SupprDocteurFromBaseNP(Nom,Prenom);
+        }
+        }  
+        }
+
+
+        
+        
+            }
+    
+    public void SupprHospitalisation()
+    {
+        int test=0;
+        String strId;
+        int Id;
+        
+        JOptionPane jop = new JOptionPane();
+
+        while (test==0) {
+        strId = jop.showInputDialog(null, "Entrer l'identifiant de l'hospitalisation à supprimer", "Identifiant", JOptionPane.QUESTION_MESSAGE);
+
+        if ((strId!=null) && (!strId.isEmpty())) {
+            try {
+                Id = Integer.parseInt(strId);
+                test=1;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+            }
+        }
+        } // Fin du while
+        
+        // SupprHospitalisationFromBase(Id);
+    }
+            
+    public void SupprInfirmier()
+    {
+        int test=0;
+        String strId;
+        int Id;
+        int chx;
+        String Nom;
+        String Prenom;
+        
+        ChoixSuppression ChxSup=new ChoixSuppression();
+        chx=ChxSup.Result();
+        
+        if (chx==1)
+        {
+           JOptionPane jop = new JOptionPane();
+        while (test==0) {
+        strId = jop.showInputDialog(null, "Entrer l'identifiant de l'infirmier à supprimer", "Identifiant", JOptionPane.QUESTION_MESSAGE);
+
+        if ((strId!=null) && (!strId.isEmpty())) {
+            try {
+                Id = Integer.parseInt(strId);
+                test=1;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+               }
+             }
+            } // Fin du while
+        //SupprInfirmierFromBaseId(Id);
+        }
+        
+        else if (chx==2)
+        {
+            JOptionPane jop = new JOptionPane();
+            while (test==0) {
+            Nom = jop.showInputDialog(null, "Entrer son nom", "Nom", JOptionPane.QUESTION_MESSAGE);
+            if ((Nom!=null) && (!Nom.isEmpty())) test=1;
+            
+            while (test==1) {
+            Prenom = jop.showInputDialog(null, "Entrer son prénom", "Prénom", JOptionPane.QUESTION_MESSAGE);
+            if ((Prenom!=null) && (!Prenom.isEmpty())) test=2;
+            
+            //SupprInfirmierFromBaseNP(Nom,Prenom);
+        }
+        }
+  
+        }
+
+            }
+
+    public void SupprMalade()
+    {
+        int test=0;
+        String strId;
+        int Id;
+        int chx;
+        String Nom;
+        String Prenom;
+        
+        ChoixSuppression ChxSup=new ChoixSuppression();
+        chx=ChxSup.Result();
+        
+        if (chx==1)
+        {
+           JOptionPane jop = new JOptionPane();
+        while (test==0) {
+        strId = jop.showInputDialog(null, "Entrer l'identifiant du malade à supprimer", "Identifiant", JOptionPane.QUESTION_MESSAGE);
+
+        if ((strId!=null) && (!strId.isEmpty())) {
+            try {
+                Id = Integer.parseInt(strId);
+                test=1;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+               }
+             }
+            } // Fin du while
+        //SupprMaladeFromBaseId(Id);
+        }
+        
+        else if (chx==2)
+        {
+            JOptionPane jop = new JOptionPane();
+            while (test==0) {
+            Nom = jop.showInputDialog(null, "Entrer son nom", "Nom", JOptionPane.QUESTION_MESSAGE);
+            if ((Nom!=null) && (!Nom.isEmpty())) test=1;
+            
+            while (test==1) {
+            Prenom = jop.showInputDialog(null, "Entrer son prénom", "Prénom", JOptionPane.QUESTION_MESSAGE);
+            if ((Prenom!=null) && (!Prenom.isEmpty())) test=2;
+            
+            //SupprMaladeFromBaseNP(Nom,Prenom);
+        }
+        }
+  
+        }
+
+            }
+
+    public void SupprService() 
+    {
+        int test=0;
+        String strId;
+        int Id;
+        
+        JOptionPane jop = new JOptionPane();
+
+        while (test==0) {
+        strId = jop.showInputDialog(null, "Entrer l'identifiant du service à supprimer", "Identifiant", JOptionPane.QUESTION_MESSAGE);
+
+        if ((strId!=null) && (!strId.isEmpty())) {
+            try {
+                Id = Integer.parseInt(strId);
+                test=1;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+            }
+        }
+        } // Fin du while
+        
+        // SupprServiceFromBase(Id);
+    }
+
+    public void SupprSoigne() 
+    {
+        int test=0;
+        String strIdDoc;
+        int IdDoc;
+        String strIdMal;
+        int IdMal;
+        
+        JOptionPane jop = new JOptionPane();
+
+        while (test==0) {
+        strIdDoc = jop.showInputDialog(null, "Entrer l'identifiant du docteur", "Identifiant", JOptionPane.QUESTION_MESSAGE);
+
+        if ((strIdDoc!=null) && (!strIdDoc.isEmpty())) {
+            try {
+                IdDoc = Integer.parseInt(strIdDoc);
+                test=1;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+            }
+        }
+        } // Fin du while
+        
+        while (test==1) {
+        strIdMal = jop.showInputDialog(null, "Entrer l'identifiant du malade", "Identifiant", JOptionPane.QUESTION_MESSAGE);
+
+        if ((strIdMal!=null) && (!strIdMal.isEmpty())) {
+            try {
+                IdMal = Integer.parseInt(strIdMal);
+                test=2;
+            }
+            catch (NumberFormatException e){ 
+                System.out.println("Erreur : Veuillez entrer un nombre uniquement");
+            }
+        }
+        } // Fin du while
+        // SupprSoigneFromBase(IdDoc,IdMal);
+    }
+    
+    
 }
